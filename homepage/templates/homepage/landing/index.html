@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Homepage</title>
+    </head>
+    <body style="visibility: hidden;">
+
+        <div id="content"></div>
+        <h1 class="animated_text center-screen">Every great idea</h1>
+        <h1 class="animated_text animated_text2 center-screen">begins with a spark.</h1>
+        <button class="weather_button" title="Coming Soon"><img class="img1" src={% static "homepage/landing/images/weather.png" %}></button>
+        <button class="stock_button" title="Analysis of Stock Advisors"><img class="img2" src={% static "homepage/landing/images/stock.png" %}></button>
+        <button class="crime_button" title="Crime Data Analysis"><img class="img3" src={% static "homepage/landing/images/crime.png" %}></button>
+        <button class="review_button" title="Coming Soon"><img class="img4" src={% static "homepage/landing/images/review.jpg" %}></button>
+        <button class="under_construction1" title="Under Construction"><img class="img5" src={% static "homepage/landing/images/under_construction.jpg" %}></button>
+        <button class="under_construction2" title="Under Construction"><img class="img6" src={% static "homepage/landing/images/under_construction.jpg" %}></button>
+
+
+        <link rel="stylesheet" type="text/css" href="{% static "homepage/landing/jquery-ui-1.12.1/jquery-ui.css" %}">
+        <script type="text/javascript" src="{% static "homepage/landing/jquery-3.5.1.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "homepage/landing/jquery-ui-1.12.1/jquery-ui.min.js" %}"></script>
+
+        <script type="text/javascript" src="{% static "homepage/landing/GLFluid.js" %}"></script>
+        <script type="text/javascript" src="{% static "homepage/landing/dat.gui.min.js" %}"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static "homepage/landing/index.css" %}">
+        <script type="text/javascript" src="{% static "homepage/landing/index.js" %}"></script>
+    </body>
+</html>

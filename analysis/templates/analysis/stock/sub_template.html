@@ -1,0 +1,33 @@
+{% load static %}
+
+{% with location|add:"pages/1.jpg" as page1 %}
+    <div class="page" style="background-image:url({% static page1 %})"></div>
+{% endwith %}
+
+{% with location|add:"pages/2.jpg" as page2 %}
+    <div class="page" style="background-image:url({% static page2 %})"></div>
+{% endwith %}
+
+{% with location|add:"pages/3.jpg" as page3 %}
+    <div class="page" style="background-image:url({% static page3 %})"></div>
+{% endwith %}
+
+{% with location|add:"pages/4.jpg" as page4 %}
+    <div class="double" style="background-image:url({% static page4 %})"></div>
+{% endwith %}
+
+{% with location|add:"pages/5.jpg" as page5 %}
+    <div class="double" style="background-image:url({% static page5 %})"></div>
+{% endwith %}
+
+{% with location|add:"pages/6.jpg" as page6 %}
+    <div class="double" style="background-image:url({% static page6 %})"></div>
+{% endwith %}
+
+{% with location|add:"pages/7.jpg" as page7 %}
+    <div class="double" style="background-image:url({% static page7 %})"></div>
+{% endwith %}
+
+{% with location|add:"pages/8.jpg" as page8 %}
+    <div class="page" style="background-image:url({% static page8 %})"></div>
+{% endwith %}

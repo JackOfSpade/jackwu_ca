@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+  db_service:
+    image: postgres
+    environment:
+      - POSTGRES_DB=${db_name}
+      - POSTGRES_USER=${db_user}
+      - POSTGRES_PASSWORD=${db_password}
+    volumes:
+      - type: volume
+        source: db_service_volume
+        target: //db_service_volume
+  web_service:
+    build: .
+    environment:
+      - db_engine=${db_engine}
+      - db_name=${db_name}
+      - db_user=${db_user}
+      - db_password=${db_password}
+      - db_host=${db_host}
+      - db_port=${port}
+      - SECRET_KEY=${SECRET_KEY}
+      - GS_CREDENTIALS=${GS_CREDENTIALS}
+    working_dir: /jackwu_ca
+    command: bash -c "python manage.py collectstatic --no-input &&
+                      python manage.py makemigrations &&
+                      python manage.py migrate &&
+                      python manage.py runserver 0.0.0.0:80"
+    volumes:
+      - type: volume
+        source: web_service_volume
+        target: /jackwu_ca/web_service_volume
+    ports:
+      - "80:80"
+    depends_on:
+      - db_service
+
+volumes:
+  db_service_volume:
+  web_service_volume:
