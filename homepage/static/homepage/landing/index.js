@@ -49,7 +49,7 @@ $(document).ready(function() {
         // Animation for button 2
         window.setTimeout(function () {
             $(".stock_button").animate({
-                top: "17vh"
+                top: "22vh"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
