@@ -29,8 +29,8 @@ $(document).ready(function() {
         // Animation for button 1
         window.setTimeout(function () {
             $(".weather_button").animate({
-                top: "275px",
-                left: "500px"
+                top: "32vh",
+                left: "33vw"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
@@ -49,7 +49,7 @@ $(document).ready(function() {
         // Animation for button 2
         window.setTimeout(function () {
             $(".stock_button").animate({
-                top: "150px"
+                top: "17vh"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
@@ -68,8 +68,8 @@ $(document).ready(function() {
         // Animation for button 3
         window.setTimeout(function () {
             $(".crime_button").animate({
-                top: "275px",
-                right: "500px"
+                top: "32vh",
+                right: "33vw"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
@@ -88,8 +88,8 @@ $(document).ready(function() {
         // Animation for button 4
         window.setTimeout(function () {
             $(".review_button").animate({
-                bottom: "275px",
-                right: "500px"
+                bottom: "32vh",
+                right: "33vw"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
@@ -108,7 +108,7 @@ $(document).ready(function() {
         // Animation for button 5
         window.setTimeout(function () {
             $(".under_construction1").animate({
-                bottom: "150px"
+                bottom: "17vh"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
@@ -127,8 +127,8 @@ $(document).ready(function() {
         // Animation for button 6
         window.setTimeout(function () {
             $(".under_construction2").animate({
-                bottom: "275px",
-                left: "500px"
+                bottom: "32vh",
+                left: "33vw"
             }, speed);
             // After animation is done
             window.setTimeout(function () {

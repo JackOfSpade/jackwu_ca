@@ -1,7 +1,7 @@
 html,body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -11,8 +11,8 @@ body{
 }
 
 #content {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
 	-moz-user-select: none;
@@ -83,35 +83,35 @@ button{
 }
 
 .weather_button{
-    top: -25%;
-    left: -25%;
+    top: -25vh;
+    left: -25vw;
 }
 
 .stock_button{
-    top: -25%;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    top: -25vh;
+    left: 95vw;
+    transform: translate(-50vw, 0vh);
 }
 
 .crime_button{
-    top: -25%;
-    right: -25%;
+    top: -25vh;
+    right: -25vw;
 }
 
 .review_button{
-    bottom: -25%;
-    right: -25%;
+    bottom: -25vh;
+    right: -25vw;
 }
 
 .under_construction1{
-    bottom: -25%;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    bottom: -25vh;
+    left: 95vw;
+    transform: translate(-50vw, 0vh);
 }
 
 .under_construction2{
-    bottom: -25%;
-    left: -25%;
+    bottom: -25vh;
+    left: -25vw;
 }
 
 img{
