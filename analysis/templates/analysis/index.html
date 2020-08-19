@@ -20,11 +20,13 @@
                     {% endwith %}
                 </div>
             </div>
+
+            {% with location|add:"arrow.gif" as arrow %}
+                <img class="arrow" src="{% static arrow %}">
+            {% endwith %}
         </div>
 
-        {% with location|add:"arrow.gif" as arrow %}
-            <img class="arrow" src="{% static arrow %}">
-        {% endwith %}
+
 
         <script type="text/javascript" src="{% static "analysis/turn/js/jquery.min.1.7.js" %}"></script>
         <script type="text/javascript" src="{% static "analysis/turn/js/modernizr.2.5.3.min.js" %}"></script>
