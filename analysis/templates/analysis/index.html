@@ -18,16 +18,13 @@
                     {% with location|add:"sub_template.html" as sub_template %}
                         {% include sub_template %}
                     {% endwith %}
+
                 </div>
+                {% with location|add:"arrow.gif" as arrow %}
+                    <img class="arrow" src="{% static arrow %}">
+                {% endwith %}
             </div>
-
-            {% with location|add:"arrow.gif" as arrow %}
-                <img class="arrow" src="{% static arrow %}">
-            {% endwith %}
         </div>
-
-
-
         <script type="text/javascript" src="{% static "analysis/turn/js/jquery.min.1.7.js" %}"></script>
         <script type="text/javascript" src="{% static "analysis/turn/js/modernizr.2.5.3.min.js" %}"></script>
 
