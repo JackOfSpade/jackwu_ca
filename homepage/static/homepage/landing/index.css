@@ -89,7 +89,7 @@ button{
 
 .stock_button{
     top: -25vh;
-    left: 100vw;
+    left: 99vw;
     margin-left: -62.5px;
     margin-top: -62.5px;
     transform: translate(-50vw, 0vh);
@@ -107,7 +107,7 @@ button{
 
 .under_construction1{
     bottom: -25vh;
-    left: 100vw;
+    left: 99vw;
     margin-left: -62.5px;
     margin-top: -62.5px;
     transform: translate(-50vw, 0vh);
