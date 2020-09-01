@@ -7,5 +7,6 @@ urlpatterns = [
     urls.path(route="admin/", view=admin.site.urls, name="admin"),
     urls.path(route="", view=urls.include("homepage.urls"), name="homepage"),
     urls.path(route="ML_reviews/", view=urls.include("ML_reviews.urls"), name="ML_reviews"),
-    urls.path(route="analysis/", view=urls.include("analysis.urls"), name="analysis")
+    urls.path(route="analysis/", view=urls.include("analysis.urls"), name="analysis"),
+    urls.path(route="weather/", view=urls.include("weather.urls"), name="weather")
 ]

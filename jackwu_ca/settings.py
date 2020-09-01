@@ -14,38 +14,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # ------------------------------- Change here when alternating between production and dev ------------------------------
 
-# Where to find static files to collect
-STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, "ML_reviews", "static"),
-    os.path.join(BASE_DIR, "homepage", "static"),
-    os.path.join(BASE_DIR, "analysis", "static"),
-]
-
-
-# Where static files are collected after collectstatic
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
-DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-GS_BUCKET_NAME = "jackwu.ca"
-STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-STATIC_URL = "https://storage.googleapis.com/jackwu.ca/"
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file("service_account_key.json")
-
-SECRET_KEY = os.getenv("SECRET_KEY")
-
-DATABASES = {
-    "default": {
-        "ENGINE": os.getenv("db_engine"),
-        "NAME": os.getenv("db_name"),
-        "USER": os.getenv("db_user"),
-        "PASSWORD": os.getenv("db_password"),
-        "HOST": os.getenv("db_host"),
-        "PORT": os.getenv("db_port")
-    }
-}
-
-DEBUG = False
-
 
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -61,7 +29,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "homepage.apps.HomepageConfig",
     "ML_reviews.apps.MlReviewsConfig",
-    "analysis.apps.AnalysisConfig"
+    "analysis.apps.AnalysisConfig",
+    "weather.apps.WeatherConfig"
 ]
 
 MIDDLEWARE = [
