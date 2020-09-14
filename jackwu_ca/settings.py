@@ -16,6 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]", "jackwu.ca", ".jackwu.ca", "0.0.0.0"]
@@ -89,4 +90,6 @@ USE_L10N = True
 USE_TZ = True
 
 SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+
+# Need HTTPS connection
+# CSRF_COOKIE_SECURE = True

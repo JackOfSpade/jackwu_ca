@@ -133,5 +133,15 @@ $(document).ready(function() {
     };
   })();
 
-  $('.spriteWrap').sprites();
+  $(".spriteWrap").sprites();
+
+  // $("#go").click(function(){
+  //   $.ajax({
+  //     type: "POST",
+  //     url: url,
+  //     data: data,
+  //     success: success,
+  //     dataType: dataType
+  //   });
+  // });
 });

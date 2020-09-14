@@ -10,10 +10,11 @@
         <title>Analysis</title>
     </head>
     {% with location|add:"background.jpg" as background %}
-        <body style="visibility: hidden; background-image: url({% static background%});">
+        <body style="visibility: hidden; background-image: url({% static background %});">
     {% endwith %}
         <div class="flipbook-viewport">
             <div class="container">
+                <div class="flipbook">
                 <div class="flipbook">
                     {% with location|add:"sub_template.html" as sub_template %}
                         {% include sub_template %}

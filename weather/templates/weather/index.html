@@ -2108,12 +2108,23 @@
 
         <!-- control panel -->
         <div class="controls">
-            <ul>
-                <li><p>Noise</p></li>
-                <li><p>Refresh</p></li>
-            </ul>
-
-            <div class="counter"></div>
+            <form action="/weather/" method="post" autocomplete="off">
+                {% csrf_token %}
+                <ul>
+                    <li>
+                        {{ exercise_form }}
+                    </li>
+                    <li>
+                        {{ unit_form }}
+                    </li>
+                    <li>
+                        {{ zip_postal_form }}
+                    </li>
+                    <li>
+                        <input id="go" type="submit" value="Go!">
+                    </li>
+                </ul>
+            </form>
         </div>
 
 
@@ -2128,4 +2139,6 @@
     </body>
 
     <!-- ADD JQUERY INTERFACE, LINK THIS TO WEATHER APP AND FADE-IN/FADE-OUT RESULTING TEXT  -->
+    <!-- Check for invalid zip code (maybe already implemented)-->
+    <!-- hide panel after pressing go -->
 </html>
