@@ -15,8 +15,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # ------------------------------- Change here when alternating between production and dev ------------------------------
 
 
-
-
 # ----------------------------------------------------------------------------------------------------------------------
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]", "jackwu.ca", ".jackwu.ca", "0.0.0.0"]

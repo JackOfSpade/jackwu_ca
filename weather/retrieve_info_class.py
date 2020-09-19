@@ -5,6 +5,7 @@ import requests
 import weather.database_class
 import weather.hourly_weather_class
 import ctypes
+import os
 
 
 class retrieve_info:
@@ -16,7 +17,10 @@ class retrieve_info:
     @staticmethod
     def get_accuweather_api_key(index):
         config = configparser.ConfigParser()
-        config.read("config.ini")
+        # Python only
+        # config.read("config.ini")
+        # Django
+        config.read("weather/config.ini")
         key_list = list(config.items("accuweather_api_keys"))
         return key_list[index][1]
 

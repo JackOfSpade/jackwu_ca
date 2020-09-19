@@ -9,7 +9,7 @@
 
     <body>
         <audio loop autoplay id="player">
-            <source src="{% static "weather/singing_bowls.mp3" %}" type="audio/mp3">
+            <source src="{% static "weather/forest_sound.mp3" %}" type="audio/mp3">
         </audio>
 
         <!-- Stars -->
@@ -2001,7 +2001,50 @@
             </g>
         </svg>
 
-        <section id="bottom"></section>
+        <section id="bottom">
+            {% if results_matrix.shape.1 == 1 %}
+                <table id="results_table">
+                    <tr>
+                        <th> {{ results_matrix.0.0 }} </th>
+                    </tr>
+                    <tr>
+                        <th> {{ results_matrix.1.0 }} </th>
+                    </tr>
+                    <tr>
+                        <th> {{ results_matrix.2.0 }} </th>
+                    </tr>
+                </table>
+            {# results_matrix.shape.0 == 3 #}
+            {% else %}
+                <table>
+                    <tr>
+                        <th> {{ results_matrix.0.0 }} </th>
+                        {% for time in results_matrix.0 %}
+                            <td>
+                                {{ time }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th> {{ results_matrix.1.0 }} </th>
+                        {% for temperature in results_matrix.1 %}
+                            <td>
+                                {{ temperature }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th> {{ results_matrix.2.0 }} </th>
+                        {% for uv_index in results_matrix.2 %}
+                            <td>
+                                {{ uv_index }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            {% endif %}
+
+        </section>
 
         <!--  Stag  -->
         <div id="stag">
@@ -2110,15 +2153,22 @@
         <div class="controls">
             <form action="/weather/" method="post" autocomplete="off">
                 {% csrf_token %}
+                {{ form.non_field_errors }}
                 <ul>
                     <li>
-                        {{ exercise_form }}
+                        <label>{{ form.exercise.label }}: </label>
+                        {{ form.exercise }}
+                        {{ form.exercise.errors }}
                     </li>
                     <li>
-                        {{ unit_form }}
+                        <label>{{ form.unit.label }}: </label>
+                        {{ form.unit }}
+                        {{ form.unit.errors }}
                     </li>
                     <li>
-                        {{ zip_postal_form }}
+                        <label>{{ form.zip_postal.label }}: </label>
+                        {{ form.zip_postal }}
+                        {{ form.zip_postal.errors }}
                     </li>
                     <li>
                         <input id="go" type="submit" value="Go!">

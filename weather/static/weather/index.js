@@ -135,6 +135,33 @@ $(document).ready(function() {
 
   $(".spriteWrap").sprites();
 
+  controls = $(".controls")
+
+  controls.hover(function(){
+    controls.css({
+      "transform": "translate3d(0px, 0px, 0px)",
+      "opacity": "1"
+    });
+
+    $("#results_table").css({
+      "margin-left": "21%"
+    });
+  });
+
+  controls.mouseleave(function(){
+    controls.css({
+      "transform": "translate3d(-250px, 0px, 0px)",
+      "opacity": "0"
+    });
+
+    $("#results_table").css({
+      "margin-left": "1%"
+    });
+  });
+
+
+
+
   // $("#go").click(function(){
   //   $.ajax({
   //     type: "POST",
