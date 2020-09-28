@@ -14,8 +14,14 @@ unit_choices = (
     ("metric", "Metric")
 )
 
+type_of_person_choices = (
+    ("balanced", "Balanced"),
+    ("heat_tolerant", "Heat Tolerant"),
+    ("cold_tolerant", "Cold Tolerant")
+)
 
 class input_form(forms.Form):
+    type_of_person = forms.ChoiceField(label="Type of Person", choices=type_of_person_choices)
     exercise = forms.ChoiceField(label="Exercise", choices=exercise_choices)
     unit = forms.ChoiceField(label="Unit", choices=unit_choices)
     zip_postal = forms.CharField(label="Zip/Postal Code", max_length=7)
@@ -32,3 +38,4 @@ class input_form(forms.Form):
         # this method didn't change it.
         return data
 
+# FIX UNSUPPORTED POSTAL CODE POPUPM SHOULD BE IN PANEL INSTEAD OF POP-UP

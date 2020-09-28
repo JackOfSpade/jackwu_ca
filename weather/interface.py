@@ -6,7 +6,7 @@ import numpy as np
 
 
 # Make sure zip_postal returns an actual location beforehand.
-def get_appropriate_hourly_weather_instance_list(unit, exercise, zip_postal):
+def get_appropriate_hourly_weather_instance_list(type_of_person, unit, exercise, zip_postal):
     accuweather_api_key = retrieve_info_class.retrieve_info.get_accuweather_api_key(0)
     location = retrieve_info_class.retrieve_info.get_location(accuweather_api_key, zip_postal)
 
@@ -16,8 +16,8 @@ def get_appropriate_hourly_weather_instance_list(unit, exercise, zip_postal):
 
     # Get hourly weather data for TODAY.
     hourly_weather_instance_list = retrieve_info_class.retrieve_info.get_hourly_weather(location_key,
-                                                                                               accuweather_api_key,
-                                                                                                unit)
+                                                                                        accuweather_api_key,
+                                                                                        unit)
     # For testing purposes
     # PyCharm Interface console fake-clear ------------
     print('\n' * 80)  # prints 80 line breaks
@@ -39,7 +39,7 @@ def get_appropriate_hourly_weather_instance_list(unit, exercise, zip_postal):
         print("\n")
 
     retrieve_info_class.retrieve_info.remove_incompatible_hourly_weather(hourly_weather_instance_list,
-                                                                                 exercise)
+                                                                                 exercise, type_of_person)
     retrieve_info_class.retrieve_info.group_compatible_hourly_weather(hourly_weather_instance_list)
 
     return (hourly_weather_instance_list, location_name)
@@ -47,7 +47,7 @@ def get_appropriate_hourly_weather_instance_list(unit, exercise, zip_postal):
 def extract_data(hourly_weather_instance_list):
     # 2D array, each element is [time_interval, feels-like_temperature_tuple_list, uv_index_list]
     data_list = []
-    unit_type = None
+    unit = None
 
     for element in hourly_weather_instance_list:
         temp_list = []
@@ -85,19 +85,19 @@ def extract_data(hourly_weather_instance_list):
             for item in element[1]:
                 temp_list.append(item[0])
 
-            unit_type = element[1][0][1]
+            unit = element[1][0][1]
         elif type(element[1]) is tuple:
             temp_list.append(element[1][0])
-            unit_type = element[1][1]
+            unit = element[1][1]
 
         minimum = min(temp_list)
         maximum = max(temp_list)
 
 
         if minimum == maximum:
-            element[1] = str(minimum) + unit_type
+            element[1] = str(minimum) + unit
         else:
-            element[1] = str(minimum) + " " + unit_type + " - " + str(maximum) + " " + unit_type
+            element[1] = str(minimum) + unit + " - " + str(maximum) + unit
 
         temp_list.clear()
 
@@ -116,33 +116,47 @@ def extract_data(hourly_weather_instance_list):
             element[2] = str(minimum) + " - " + str(maximum)
     return data_list
 
-def get_results_matrix(unit, exercise, zip_postal):
-    if unit == "Imperial":
+def get_results_matrix(type_of_person, unit, exercise, zip_postal):
+    if unit == "imperial":
         metric = "false"
     else:
         metric = "true"
 
-    tuples_of_hourly_weather_instances_list, location_name = get_appropriate_hourly_weather_instance_list(metric, exercise, zip_postal)
+    tuples_of_hourly_weather_instances_list, location_name = get_appropriate_hourly_weather_instance_list(type_of_person, metric, exercise, zip_postal)
 
     if len(tuples_of_hourly_weather_instances_list) > 0:
-        results_matrix = np.empty(shape=(3, 0))
         data_list = extract_data(tuples_of_hourly_weather_instances_list)
 
-        results_matrix = np.append(arr=results_matrix, values=np.array(object=[["Best Time to Go Out in " + location_name + ":"],
+        if tuples_of_hourly_weather_instances_list[0][0].sunset_time is None:
+            results_matrix = np.empty(shape=(3, 0))
+            results_matrix = np.append(arr=results_matrix, values=np.array(object=[["Best Time to Go Out in " + location_name + ":"],
                                                                                ["Feels-like Temperature Range:"],
                                                                                ["UV Index Range:"]]),
                                    axis=1)
 
-        for data in data_list:
-            results_matrix = np.append(arr=results_matrix, values=np.array(object=[[data[0]],
-                                                                                   [data[1]],
-                                                                                   [data[2]]]),
+            for data in data_list:
+                results_matrix = np.append(arr=results_matrix, values=np.array(object=[[data[0]],
+                                                                                       [data[1]],
+                                                                                       [data[2]]]),
+                                           axis=1)
+        else:
+            results_matrix = np.empty(shape=(4, 0))
+            results_matrix = np.append(arr=results_matrix,
+                                       values=np.array(object=[["Best Time to Go Out in " + location_name + ":"],
+                                                               ["Feels-like Temperature Range:"],
+                                                               ["UV Index Range:"],
+                                                               ["Sunset at " + str(tuples_of_hourly_weather_instances_list[0][0].sunset_time)]]),
                                        axis=1)
 
-        if tuples_of_hourly_weather_instances_list[0][0].sunset_time is not None:
-            results_matrix = np.append(arr=results_matrix,
-                                       values=[["Sunset at ", tuples_of_hourly_weather_instances_list[0][0].sunset_time]],
-                                       axis=0)
+            for data in data_list:
+                results_matrix = np.append(arr=results_matrix, values=np.array(object=[[data[0]],
+                                                                                       [data[1]],
+                                                                                       [data[2]],
+                                                                                       [""]]),
+                                           axis=1)
+
+            # print("Sunset time: " + str(tuples_of_hourly_weather_instances_list[0][0].sunset_time))
+            # print("results_matrix: " + str(results_matrix))
     else:
         results_matrix = np.array(object=[["Weather is bad in " + location_name + " for the rest of the day."],
                                           [exercise.capitalize() + " is not recommended."],

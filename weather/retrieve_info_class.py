@@ -111,33 +111,34 @@ class retrieve_info:
 
     @staticmethod
     # 8C to 23C
-    def remove_incompatible_hourly_weather(hourly_weather_instance_list, exercise_type):
+    def remove_incompatible_hourly_weather(hourly_weather_instance_list, exercise, type_of_person):
         lower_bound_metric = 0
         upper_bound_metric = 0
         lower_bound_imperial = 0
         upper_bound_imperial = 0
 
-        if exercise_type == "Walking":
+        if exercise == "walking":
             lower_bound_metric = 12
             upper_bound_metric = 24
             lower_bound_imperial = 53.6
             upper_bound_imperial = 75.2
-        elif exercise_type == "Jogging":
+        elif exercise == "jogging":
             lower_bound_metric = 8
             upper_bound_metric = 20
             lower_bound_imperial = 46.4
             upper_bound_imperial = 68
-        elif exercise_type == "Cycling":
+        elif exercise == "cycling":
             lower_bound_metric = 15
             upper_bound_metric = 27
             lower_bound_imperial = 59
             upper_bound_imperial = 80.6
 
-        # For testing purposes:
-        # print("lower_bound_metric: " + str(lower_bound_metric))
-        # print("upper_bound_metric: " + str(upper_bound_metric))
-        # print("lower_bound_imperial: " + str(lower_bound_imperial))
-        # print("upper_bound_imperial : " + str(upper_bound_imperial))
+        if type_of_person == "heat_tolerant":
+            upper_bound_metric += 5
+            upper_bound_imperial += 9
+        elif type_of_person == "cold_tolerant":
+            lower_bound_metric -= 5
+            lower_bound_imperial -= 9
 
         i = 0
         length = len(hourly_weather_instance_list)

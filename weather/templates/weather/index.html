@@ -4,7 +4,6 @@
     <head>
         <meta charset="UTF-8">
         <title>Weather Insights</title>
-
     </head>
 
     <body>
@@ -2014,9 +2013,9 @@
                         <th> {{ results_matrix.2.0 }} </th>
                     </tr>
                 </table>
-            {# results_matrix.shape.0 == 3 #}
+             results_matrix.shape.0 == 3
             {% else %}
-                <table>
+                <table id="results_table">
                     <tr>
                         <th> {{ results_matrix.0.0 }} </th>
                         {% for time in results_matrix.0 %}
@@ -2151,10 +2150,19 @@
 
         <!-- control panel -->
         <div class="controls">
-            <form action="/weather/" method="post" autocomplete="off">
+            <form action="/weather/" method="post" autocomplete="off" id="weather_form">
                 {% csrf_token %}
                 {{ form.non_field_errors }}
+                {{ error }}
                 <ul>
+                    <li class="center_text">
+                        <h3>Best Time to Go Out</h3>
+                    </li>
+                    <li>
+                        <label>{{ form.type_of_person.label }}: </label>
+                        {{ form.type_of_person }}
+                        {{ form.type_of_person.errors }}
+                    </li>
                     <li>
                         <label>{{ form.exercise.label }}: </label>
                         {{ form.exercise }}

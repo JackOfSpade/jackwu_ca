@@ -1239,3 +1239,11 @@ option {
 #results_table{
   margin-left: 21%;
 }
+
+.center_text{
+  text-align: center;
+}
+
+.results_td{
+  padding-left: 10px;
+}

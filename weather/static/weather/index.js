@@ -1,4 +1,37 @@
+
+
 $(document).ready(function() {
+  function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+
+  const csrftoken = getCookie("csrftoken");
+
+  function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+
+  $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+      }
+  });
+
   $("html").one( "click", function() {
     const player = $("#player")
     player.get(0).play();
@@ -159,16 +192,74 @@ $(document).ready(function() {
     });
   });
 
+  function convert_to_html(list_or_string) {
+    var element;
+    var html = "";
+    if (Array.isArray(list_or_string)){
+      for (element in list_or_string) {
+        html += "<td class='results_td'>" + element + "</td>";
+      }
+    }
+    else{
+      html = "<td class='results_td'>" + list_or_string + "</td>";
+    }
 
+    return html;
+  }
 
-
+  $("#weather_form").on("submit", function(event){
   // $("#go").click(function(){
-  //   $.ajax({
-  //     type: "POST",
-  //     url: url,
-  //     data: data,
-  //     success: success,
-  //     dataType: dataType
-  //   });
-  // });
+    //Prevent default django post behaviour for a form submission.
+    event.preventDefault();
+
+    $.ajax({
+      url: "/weather/",
+      type: "POST",
+      data: {type_of_person: $("#id_type_of_person").val(),
+        exercise: $("#id_exercise").val(),
+        unit: $("#id_unit").val(),
+        zip_postal: $("#id_zip_postal").val()},
+      dataType: "json",
+      success: function (data){
+        results_matrix = data["results_matrix"];
+
+        $("#results_table tr").remove();
+
+        var time_html = convert_to_html(results_matrix[0][1]);
+        var temperature_html = convert_to_html(results_matrix[1][1]);
+        var uv_index_html = convert_to_html(results_matrix[2][1]);
+
+        $("#results_table").append(
+            "<tr>" +
+              "<th>" + results_matrix[0][0] + "</th>" +
+              time_html +
+            "</tr>" +
+            "<tr>" +
+              "<th>" + results_matrix[1][0] + "</th>" +
+              temperature_html +
+            "</tr>" +
+            "<tr>" +
+              "<th>" + results_matrix[2][0] + "</th>" +
+              uv_index_html +
+            "</tr>");
+
+        if (results_matrix[3][0])
+        {
+           $("#results_table").append(
+            "<tr>" +
+              "<th>" + results_matrix[3][0] + "</th>" +
+            "</tr>");
+        }
+      },
+      error: function(xhr,errmsg,err) {
+        $("html").innerHTML = "";
+        $("html").prepend("<body><div id='dialog'><p>" + xhr.responseText + "</p></div></body>");
+        $( "#dialog" ).dialog({
+          maxHeight: window.innerHeight - 15,
+          overflow:"scroll"
+        });
+      }
+    });
+  });
 });
+

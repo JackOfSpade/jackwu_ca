@@ -3,6 +3,7 @@ import django.http as http
 import django.shortcuts as shortcuts
 import weather.forms as forms
 import weather.interface as interface
+import json
 
 class weather(base.TemplateView):
     template_name = "weather/index.html"
@@ -14,28 +15,20 @@ class weather(base.TemplateView):
 
     @staticmethod
     def post(request, *args, **kwargs):
-        exercise = None
-        unit = None
-        zip_postal = None
-        results_matrix = None
+        # create a form instance and populate it with data from the request:
+        form = forms.input_form(request.POST)
 
-        # if this is a POST request we need to process the form data
-        if request.method == "POST":
-            # create a form instance and populate it with data from the request:
-            form = forms.input_form(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data
+            type_of_person = form.cleaned_data["type_of_person"]
+            exercise = form.cleaned_data["exercise"]
+            unit = form.cleaned_data["unit"]
+            zip_postal = form.cleaned_data["zip_postal"]
 
-            # check whether it's valid:
-            if form.is_valid():
-                # process the data
-                exercise = form.cleaned_data["exercise"]
-                unit = form.cleaned_data["unit"]
-                zip_postal = form.cleaned_data["zip_postal"]
-
-                results_matrix = interface.get_results_matrix(unit, exercise, zip_postal)
-
-        # GET request
+            results_matrix = interface.get_results_matrix(type_of_person, unit, exercise, zip_postal)
+            # return shortcuts.render(request, "weather/index.html", context={"form":form, "results_matrix": results_matrix.tolist()})=
+            return http.JsonResponse({"results_matrix": results_matrix.tolist()}, status=200)
         else:
-            # Blank form
-            form = forms.input_form()
+            return http.JsonResponse({"error": form.errors}, status=400)
 
-        return shortcuts.render(request, "weather/index.html", {"form": form, "results_matrix": results_matrix})
