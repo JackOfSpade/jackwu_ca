@@ -210,6 +210,8 @@ $(document).ready(function() {
   }
 
   loading.hide()
+  var id_zip_postal = $("#id_zip_postal");
+  id_zip_postal.tooltip({position: {my: "right-75 center", at: "center"}});
 
   $("#weather_form").on("submit", function(event){
     go.hide();
@@ -222,8 +224,6 @@ $(document).ready(function() {
 
     results_table.hide();
     results_table.find("tr").remove();
-    var id_zip_postal = $("#id_zip_postal");
-    id_zip_postal.tooltip({position: {my: "right-75 center", at: "center"}});
 
     $.ajax({
       url: "/weather/",
