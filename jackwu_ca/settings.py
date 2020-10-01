@@ -17,6 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Where to find static files to collect
 STATICFILES_DIRS = [
     # os.path.join(BASE_DIR, "ML_reviews", "static"),
+    os.path.join(BASE_DIR, "weather", "static"),
     os.path.join(BASE_DIR, "homepage", "static"),
     os.path.join(BASE_DIR, "analysis", "static"),
 ]
