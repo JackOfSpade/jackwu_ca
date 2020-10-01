@@ -23,8 +23,8 @@ $.extend($.fn, {
 				},
 				newElement = element.clone(true);
 
-				var leftPage = $('<div />', {css: pageProperties}),
-					rightPage = $('<div />', {css: pageProperties});
+				var leftPage = $('<div></div>', {css: pageProperties}),
+					rightPage = $('<div></div>', {css: pageProperties});
 
 				element.after(leftPage);
 				leftPage.after(rightPage);

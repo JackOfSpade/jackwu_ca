@@ -10,6 +10,7 @@ class hourly_weather:
     def convert_from_epoch_to_12_hour_time(epoch_time):
         twenty_four_hour_time = datetime.datetime.fromtimestamp(epoch_time)
         twelve_hour_time = copy.deepcopy(twenty_four_hour_time)
+        period = None
 
         if twenty_four_hour_time.hour == 0:
             converted_hour = 12
@@ -36,6 +37,7 @@ class hourly_weather:
     @staticmethod
     def convert_from_24_to_12_hour_time(twenty_four_hour_time):
         twelve_hour_time = copy.deepcopy(twenty_four_hour_time)
+        period = None
 
         if twenty_four_hour_time.hour == 0:
             converted_hour = 12

@@ -15,7 +15,6 @@
         <div class="flipbook-viewport">
             <div class="container">
                 <div class="flipbook">
-                <div class="flipbook">
                     {% with location|add:"sub_template.html" as sub_template %}
                         {% include sub_template %}
                     {% endwith %}
@@ -40,7 +39,7 @@
                     var flipbook = $('.flipbook');
 
                     // Check if the CSS was already loaded
-                    if (flipbook.width()==0 || flipbook.height()==0) {
+                    if (flipbook.width()===0 || flipbook.height()===0) {
                         setTimeout(loadApp, 10);
                         return;
                     }

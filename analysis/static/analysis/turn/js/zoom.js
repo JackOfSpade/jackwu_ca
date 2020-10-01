@@ -135,17 +135,17 @@ zoomMethods = {
       lastEvent = list.length-1;
 
     if (lastEvent>0 &&
-      list[lastEvent].name=='tap' &&
-      list[lastEvent-1].name=='tap' &&
-      list[lastEvent].event.pageX == list[lastEvent-1].event.pageX &&
-      list[lastEvent].event.pageY == list[lastEvent-1].event.pageY &&
+      list[lastEvent].name==='tap' &&
+      list[lastEvent-1].name==='tap' &&
+      list[lastEvent].event.pageX === list[lastEvent-1].event.pageX &&
+      list[lastEvent].event.pageY === list[lastEvent-1].event.pageY &&
       list[lastEvent].timestamp-list[lastEvent-1].timestamp < 200 &&
       list[lastEvent].timestamp-list[lastEvent-1].timestamp > 50)
     {
   
       return $.extend(list[lastEvent].event, {type: 'zoom.doubleTap'});
 
-    } else if (list[lastEvent].name=='tap') {
+    } else if (list[lastEvent].name==='tap') {
       
       return $.extend(list[lastEvent].event, {type: 'zoom.tap'});
 
@@ -166,20 +166,20 @@ zoomMethods = {
       flipSize = {height: flip.height()},
       view = flip.turn('view');
 
-      if (flip.turn('display')=='double' && flip.data().opts.autoCenter) {
+      if (flip.turn('display')==='double' && flip.data().opts.autoCenter) {
         if (!view[0]) {
           flipSize.width = flip.width()/2;
-          offsetLeft = (dir=='ltr') ? flipSize.width : 0;
+          offsetLeft = (dir==='ltr') ? flipSize.width : 0;
           flipPos = point2D(
-            (dir=='ltr') ? flipOffset.left-thisOffset.left+flipSize.width : flipOffset.left-thisOffset.left,
+            (dir==='ltr') ? flipOffset.left-thisOffset.left+flipSize.width : flipOffset.left-thisOffset.left,
             flipOffset.top-thisOffset.top
           );
 
         } else if (!view[1]) {
           flipSize.width = flip.width()/2;
-          offsetLeft = (dir=='ltr') ? 0 : flipSize.width;
+          offsetLeft = (dir==='ltr') ? 0 : flipSize.width;
           flipPos = point2D(
-            (dir=='ltr') ? flipOffset.left-thisOffset.left : flipOffset.left-thisOffset.left+flipSize.width,
+            (dir==='ltr') ? flipOffset.left-thisOffset.left : flipOffset.left-thisOffset.left+flipSize.width,
             flipOffset.top-thisOffset.top
           );
         } else {
@@ -198,7 +198,7 @@ zoomMethods = {
       }
 
     if (!data.zoomer) {
-      data.zoomer = $('<div />',
+      data.zoomer = $('<div></div>',
         {'class': 'zoomer',
           css: {
             overflow:'hidden',
@@ -221,7 +221,7 @@ zoomMethods = {
     
     var zoomerView = view.join(',');
 
-    if (zoomerView!=data.zoomerView) {
+    if (zoomerView!==data.zoomerView) {
 
       data.zoomerView = zoomerView;
       data.zoomer.find('*').remove();
@@ -393,9 +393,9 @@ zoomMethods = {
       );
 
 
-      if (autoCenter && flip.turn('display')=='double')
-        if ((flip.turn('direction')=='ltr' && !flip.turn('view')[0]) ||
-          (flip.turn('direction')=='rtl' && !flip.turn('view')[1])
+      if (autoCenter && flip.turn('display')==='double')
+        if ((flip.turn('direction')==='ltr' && !flip.turn('view')[0]) ||
+          (flip.turn('direction')==='rtl' && !flip.turn('view')[1])
         )
           data.axis.x = data.axis.x + flip.width()/2;
 
@@ -474,7 +474,7 @@ zoomMethods = {
     flip.css(css);
 
     var flipDesPos,
-      tmp = $('<div />', {
+      tmp = $('<div></div>', {
         css: {
           position: 'relative',
           top: data.flipPosition.y,
@@ -495,14 +495,14 @@ zoomMethods = {
 
     var autoCenter = flip.data().opts.autoCenter;
 
-    if (autoCenter && flip.turn('display')=='double') {
+    if (autoCenter && flip.turn('display')==='double') {
 
       if (!flip.turn('view')[0])
-        flipDesPos.x = (flip.turn('direction')=='ltr') ?
+        flipDesPos.x = (flip.turn('direction')==='ltr') ?
           flipDesPos.x-tmp.width()/4 :
           flipDesPos.x+tmp.width()/4;
       else if (!flip.turn('view')[1])
-        flipDesPos.x = (flip.turn('direction')=='ltr') ?
+        flipDesPos.x = (flip.turn('direction')==='ltr') ?
           flipDesPos.x+tmp.width()/4 :
           flipDesPos.x-tmp.width()/4;
     }
@@ -578,7 +578,7 @@ zoomMethods = {
       flipbook = data.opts.flipbook,
       view = flipbook.turn('view');
 
-    return (flipbook.turn('display')=='double' && (!view[0] || !view[1])) ?
+    return (flipbook.turn('display')==='double' && (!view[0] || !view[1])) ?
       flipbook.width()/2
       :
       flipbook.width();
@@ -663,8 +663,8 @@ zoomMethods = {
         (flipOffset.top - thisOffset.top) + (data.axis.y + data.scrollPos.y)
       );
 
-      if (flip.turn('display')=='double' &&
-        flip.turn('direction')=='ltr' &&
+      if (flip.turn('display')==='double' &&
+        flip.turn('direction')==='ltr' &&
         !flip.turn('view')[0])
           data.axis.x = data.axis.x + flip.width()/2;
 
@@ -690,7 +690,7 @@ zoomMethods = {
 
   _eStart: function(event, pageObj) {
 
-    if (this.zoom('value')!=1) {
+    if (this.zoom('value')!==1) {
       event.preventDefault();
     }
 
@@ -706,7 +706,7 @@ zoomMethods = {
 
     data.page = flip.turn('page');
 
-    if (zoom!=1) {
+    if (zoom!==1) {
       for (var p = 0; p<view.length; p++) {
         if (view[p])
           this.trigger('zoom.resize',
@@ -723,7 +723,7 @@ zoomMethods = {
 
   _eTurned: function (event, page) {
     
-    if (this.zoom('value')!=1) {
+    if (this.zoom('value')!==1) {
       var that = this,
         data = this.data().zoom,
         flip = data.opts.flipbook;
@@ -861,7 +861,7 @@ zoomMethods = {
         event.originalEvent.touches[0].pageY
       );
     
-    if (data.touch && zoom==1 && !flip.data().mouseAction) {
+    if (data.touch && zoom===1 && !flip.data().mouseAction) {
       data.touch.motion = point2D(
         finger.x-data.touch.last.x,
         finger.y-data.touch.last.y);
@@ -881,7 +881,7 @@ zoomMethods = {
 
     var data = $(this).data().zoom;
 
-    if (data.touch && $(this).zoom('value')==1) {
+    if (data.touch && $(this).zoom('value')===1) {
 
       var y = Math.abs(data.touch.initial.y - data.touch.last.y);
 
@@ -940,7 +940,7 @@ zoomMethods = {
 
 function isPage(element, last) {
 
-  if (element[0]==last[0])
+  if (element[0]===last[0])
     return false;
 
   if (element.attr('page'))

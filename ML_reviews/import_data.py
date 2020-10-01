@@ -10,7 +10,6 @@ import copy
 
 np.set_printoptions(threshold=1000000)
 
-model_dictionary = dict()
 model_dictionary = {"Appliances":models.Appliances,
                     "ArtsCraftsAndSewing":models.ArtsCraftsAndSewing,
                     "AudioBooks":models.AudioBooks,
@@ -172,6 +171,8 @@ def generate_predictor(table_name):
         T = 0
         old_accuracy = 0
         new_accuracy = 0.01
+        theta = None
+        theta_0 = None
 
         print("Begin perceptron.")
         while np.abs(new_accuracy - old_accuracy) >= 0.005:

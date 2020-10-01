@@ -50,6 +50,7 @@ class retrieve_info:
     @staticmethod
     def get_hourly_weather(location_key, api_key, metric):
         index = 0
+        response = None
 
         while index < 20:
             # Upgraded API key needed for 24-hour hourly weather data

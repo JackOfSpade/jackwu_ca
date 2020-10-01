@@ -181,7 +181,7 @@ turnMethods = {
     // Add pages from the DOM
 
     for (i = 0; i<ch.length; i++) {
-      if ($(ch[i]).attr('ignore')!='1') {
+      if ($(ch[i]).attr('ignore')!=='1') {
         this.turn('addPage', ch[i], ++pageNum);
       }
     }
@@ -227,7 +227,7 @@ turnMethods = {
 
     if (page) {
       
-      if (page==lastPage)
+      if (page===lastPage)
         incPages = true;
       else if (page>lastPage)
         throw turnError('Page "'+page+'" cannot be inserted');
@@ -241,7 +241,7 @@ turnMethods = {
 
     if (page>=1 && page<=lastPage) {
 
-      if (data.display=='double')
+      if (data.display==='double')
         className = (page%2) ? ' odd' : ' even';
       else
         className = '';
@@ -299,7 +299,7 @@ turnMethods = {
           data.pagePlace[page] = page;
 
           // Wrapper
-          data.pageWrap[page] = $('<div/>',
+          data.pageWrap[page] = $('<div></div>',
             {'class': 'turn-page-wrapper',
               page: page,
               css: {position: 'absolute',
@@ -315,7 +315,7 @@ turnMethods = {
         }
 
         // If the page is in the current view, create the flip effect
-        if (!page || turnMethods._setPageLoc.call(this, page)==1)
+        if (!page || turnMethods._setPageLoc.call(this, page)===1)
           turnMethods._makeFlip.call(this, page);
         
       } else {
@@ -347,10 +347,10 @@ turnMethods = {
       size = $(this).turn('size'),
       left = size.width/(data.zoom*2) -size.width/2;
 
-    if (data.display=='double') {
+    if (data.display==='double') {
       var view = this.turn('view', page || data.tpage || data.page);
 
-      if (data.direction=='ltr') {
+      if (data.direction==='ltr') {
         if (!view[0])
           left -= size.width/4;
         else if (!view[1])
@@ -467,7 +467,7 @@ turnMethods = {
     var data = this.data(),
       prop = {};
 
-    if (data.display=='single') {
+    if (data.display==='single') {
 
       prop.width = this.width();
       prop.height = this.height();
@@ -495,7 +495,7 @@ turnMethods = {
         var odd = page%2;
         prop.top = (pageHeight-prop.height)/2;
 
-        if (data.direction=='ltr') {
+        if (data.direction==='ltr') {
           
           prop[(odd) ? 'right' : 'left'] = pageWidth-prop.width;
           prop[(odd) ? 'left' : 'right'] = 'auto';
@@ -520,9 +520,9 @@ turnMethods = {
 
     var data = this.data();
 
-    if (!data.pages[page] && data.pagePlace[page]==page) {
+    if (!data.pages[page] && data.pagePlace[page]===page) {
       var corner,
-        single = data.display=='single',
+        single = data.display==='single',
         odd = page%2;
 
       data.pages[page] = data.pageObjs[page].
@@ -705,7 +705,7 @@ turnMethods = {
     var page,
       that = this,
       data = this.data(),
-      single = data.display=='single',
+      single = data.display==='single',
       move = function(page) {
 
         var next = page + change,
@@ -765,16 +765,16 @@ turnMethods = {
 
     if (display) {
 
-      if ($.inArray(display, displays)==-1)
+      if ($.inArray(display, displays)===-1)
         throw turnError('"'+display + '" is not a value for display');
       
-      if (display=='single') {
+      if (display==='single') {
         if (!data.pageObjs[0]) {
 
           this.turn('stop').
             css({'overflow': 'hidden'});
 
-          data.pageObjs[0] = $('<div />',
+          data.pageObjs[0] = $('<div></div>',
               {'class': 'page p-temporal'}).
             css({width: this.width(), height: this.height()}).
             appendTo(this);
@@ -818,10 +818,10 @@ turnMethods = {
 
       dir = dir.toLowerCase();
 
-      if ($.inArray(dir, directions)==-1)
+      if ($.inArray(dir, directions)===-1)
         throw turnError('"' + dir + '" is not a value for direction');
 
-      if (dir=='rtl') {
+      if (dir==='rtl') {
         $(this).attr('dir', 'ltr').
           css({direction: 'ltr'});
       }
@@ -882,7 +882,7 @@ turnMethods = {
 
       var page, prop,
         data = this.data(),
-        pageWidth = (data.display=='double') ? width/2 : width;
+        pageWidth = (data.display==='double') ? width/2 : width;
 
       this.css({width: width, height: height});
 
@@ -937,7 +937,7 @@ turnMethods = {
     var i, data = this.data();
       
     for (i=0; i<data.pageMv.length; i++)
-      if (data.pageMv[i]==page) {
+      if (data.pageMv[i]===page) {
         data.pageMv.splice(i, 1);
         return true;
       }
@@ -965,7 +965,7 @@ turnMethods = {
     
     page = page || data.page;
 
-    if (data.display=='double')
+    if (data.display==='double')
       return (page%2) ? [page-1, page] : [page, page+1];
     else
       return [page];
@@ -979,7 +979,7 @@ turnMethods = {
     var data = this.data(),
       view = turnMethods._view.call(this, page);
 
-    if (data.display=='double')
+    if (data.display==='double')
       return [(view[0]>0) ? view[0] : 0,
         (view[1]<=data.totalPages) ? view[1] : 0];
     else
@@ -1105,7 +1105,7 @@ turnMethods = {
       view = this.turn('view'),
       newView = this.turn('view', page);
   
-    if (data.page!=page) {
+    if (data.page!==page) {
 
       var event = $.Event('turning');
       this.trigger(event, [page, newView]);
@@ -1113,9 +1113,9 @@ turnMethods = {
       if (event.isDefaultPrevented())
         return;
 
-      if ($.inArray(1, newView)!=-1)
+      if ($.inArray(1, newView)!==-1)
         this.trigger('first');
-      if ($.inArray(data.totalPages, newView)!=-1)
+      if ($.inArray(data.totalPages, newView)!==-1)
         this.trigger('last');
 
     }
@@ -1140,7 +1140,7 @@ turnMethods = {
 
     turnMethods._makeRange.call(this);
 
-    if (data.display=='single') {
+    if (data.display==='single') {
       current = view[0];
       next = newView[0];
     } else if (view[1] && page>view[1]) {
@@ -1156,15 +1156,15 @@ turnMethods = {
       var opts = data.pages[current].data().f.opts;
       data.tpage = next;
       
-      if (opts.next!=next) {
+      if (opts.next!==next) {
         opts.next = next;
         data.pagePlace[next] = opts.page;
         opts.force = true;
       }
 
-      if (data.display=='single') {
+      if (data.display==='single') {
 
-        if (data.direction=='ltr') {
+        if (data.direction==='ltr') {
           data.pages[current].flip('turnPage',
             (newView[0] > view[0]) ? 'r' : 'l');
         } else {
@@ -1190,7 +1190,7 @@ turnMethods = {
     var data = this.data();
 
     if (page>0 && page<=data.totalPages) {
-      if (!data.done || $.inArray(page, this.turn('view'))!=-1)
+      if (!data.done || $.inArray(page, this.turn('view'))!==-1)
         turnMethods._fitPage.call(this, page);
       else
         turnMethods._turnPage.call(this, page);
@@ -1252,11 +1252,11 @@ turnMethods = {
       return;
     }
 
-    if (data.display=='single' && corner) {
+    if (data.display==='single' && corner) {
 
-      if ((corner=='l' && data.direction=='ltr')
+      if ((corner==='l' && data.direction==='ltr')
         ||
-        (corner=='r' && data.direction=='rtl'))
+        (corner==='r' && data.direction==='rtl'))
       {
         
         opts.next = (opts.next<opts.page) ? opts.next : opts.page-1;
@@ -1285,7 +1285,7 @@ turnMethods = {
 
     if (turned || dd.tpage) {
 
-      if (dd.tpage==opts.next || dd.tpage==opts.page) {
+      if (dd.tpage===opts.next || dd.tpage===opts.page) {
         delete dd['tpage'];
         turnMethods._fitPage.call(turn, dd.tpage || opts.next, true);
       }
@@ -1311,7 +1311,7 @@ turnMethods = {
       pages = data.opts.turn.data().pages;
 
     for (page in pages)
-      if (page!=data.opts.page)
+      if (page!==data.opts.page)
         pages[page].flip('disable', true);
 
     return data.time = new Date().getTime();
@@ -1330,8 +1330,8 @@ turnMethods = {
       turn = data.opts.turn,
       turnData = turn.data();
     
-    if (turnData.display=='single') {
-      outArea = (point.corner=='r') ?
+    if (turnData.display==='single') {
+      outArea = (point.corner==='r') ?
         point.x<page.width()/2:
         point.x>page.width()/2;
     } else {
@@ -1392,7 +1392,7 @@ turnMethods = {
       placePage = data.pagePlace[page];
       addView(page);
       addView(nextPage);
-      dpage = (data.pagePlace[nextPage]==nextPage) ? nextPage : page;
+      dpage = (data.pagePlace[nextPage]===nextPage) ? nextPage : page;
       r.pageZ[dpage] = data.totalPages - Math.abs(currentPage-dpage);
       r.partZ[placePage] = data.totalPages*2 + Math.abs(currentPage-dpage);
     }
@@ -1452,7 +1452,7 @@ turnMethods = {
 
         if (data.pages[page])
           data.pages[page].flip('disable',
-            data.disabled || pageLocation!=1).flip('z', null);
+            data.disabled || pageLocation!==1).flip('z', null);
 
       }
     }
@@ -1466,12 +1466,12 @@ turnMethods = {
       data = this.data(),
       width = this.width(),
       height = this.height(),
-      pageWidth = (data.display=='single') ? width : width/2;
+      pageWidth = (data.display==='single') ? width : width/2;
 
     view = this.turn('view');
 
     if (!data.shadow) {
-      data.shadow = $('<div />',
+      data.shadow = $('<div></div>',
       {
         'class': 'shadow',
         'css': divAtt(0, 0, 0).css
@@ -1490,8 +1490,8 @@ turnMethods = {
       view[1] = view[1] && view2[1];
     }
 
-    if (!view[0]) shadow = (data.direction=='ltr') ? 1 : 2;
-    else if (!view[1]) shadow = (data.direction=='ltr') ? 2 : 1;
+    if (!view[0]) shadow = (data.direction==='ltr') ? 1 : 2;
+    else if (!view[1]) shadow = (data.direction==='ltr') ? 2 : 1;
     else shadow = 3;
 
     switch (shadow) {
@@ -1531,14 +1531,14 @@ turnMethods = {
     var data = this.data(),
       view = this.turn('view');
 
-    if (page==view[0] || page==view[1]) {
+    if (page===view[0] || page===view[1]) {
       
       data.pageWrap[page].css({zIndex: data.totalPages, display: ''});
       return 1;
 
-    } else if ((data.display=='single' && page==view[0]+1) ||
-      (data.display=='double' && page==view[0]-2 ||
-      page==view[1]+2)) {
+    } else if ((data.display==='single' && page===view[0]+1) ||
+      (data.display==='double' && page===view[0]-2 ||
+      page===view[1]+2)) {
       
       data.pageWrap[page].css({zIndex: data.totalPages-1, display: ''});
       return 2;
@@ -1626,7 +1626,7 @@ flipMethods = {
   init: function(opts) {
 
     this.data({f:
-      {effect: (opts.corners=='r' || opts.corners=='l') ? 'hard' : 'sheet'}}
+      {effect: (opts.corners==='r' || opts.corners==='l') ? 'hard' : 'sheet'}}
     );
 
     this.flip('options', opts);
@@ -1679,18 +1679,18 @@ flipMethods = {
     page = data.opts.page,
     odd = page%2;
 
-    if (turnData.display=='single') {
-      if (page==1)
-        return (turnData.direction=='ltr') ?
+    if (turnData.display==='single') {
+      if (page===1)
+        return (turnData.direction==='ltr') ?
           corners['forward'] : corners['backward'];
-      else if (page==turnData.totalPages)
-        return (turnData.direction=='ltr') ?
+      else if (page===turnData.totalPages)
+        return (turnData.direction==='ltr') ?
           corners['backward'] : corners['forward'];
       else
         return corners['all'];
     } else {
 
-      return (turnData.direction=='ltr') ?
+      return (turnData.direction==='ltr') ?
         corners[(odd) ? 'forward' : 'backward']
         :
         corners[(odd) ? 'backward' : 'forward'];
@@ -1722,7 +1722,7 @@ flipMethods = {
       return false;
 
 
-    return ($.inArray(c.corner, allowedCorners)==-1) ? false : c;
+    return ($.inArray(c.corner, allowedCorners)===-1) ? false : c;
 
   },
 
@@ -1759,7 +1759,7 @@ flipMethods = {
     else if(opts.turn) {
 
       data = opts.turn.data();
-      if (data.display == 'single')
+      if (data.display === 'single')
         return (data.pageObjs[opts.next]) ? data.pageObjs[0] : null;
       else
         return data.pageObjs[opts.next];
@@ -1770,14 +1770,11 @@ flipMethods = {
   _backGradient: function() {
 
     var data = this.data().f,
-      turn = data.opts.turn,
-      gradient = data.opts.gradients &&
+      turn = data.opts.turn;
+    return data.opts.gradients &&
         (!turn ||
-        turn.data().display=='single' ||
-        (data.opts.page!=2 && data.opts.page!=turn.data().totalPages-1));
-
-
-    return gradient;
+            turn.data().display == 'single' ||
+            (data.opts.page != 2 && data.opts.page != turn.data().totalPages - 1));
 
   },
 
@@ -1809,12 +1806,12 @@ flipMethods = {
         
       var cssProperties = {};
 
-      data.wrapper = $('<div/>', divAtt(0, 0, 2)).
+      data.wrapper = $('<div></div>', divAtt(0, 0, 2)).
         css(cssProperties).
         appendTo(parent).
         prepend(this);
 
-      data.fpage = $('<div/>', divAtt(0, 0, 1)).
+      data.fpage = $('<div></div>', divAtt(0, 0, 1)).
         css(cssProperties).
         appendTo(parent);
 
@@ -1926,7 +1923,7 @@ flipMethods = {
       data = dd.f,
       visible = data.visible;
 
-    if (!visible || !data.point || data.point.corner!=c.corner) {
+    if (!visible || !data.point || data.point.corner!==c.corner) {
       
       var mAction = data.opts.turn.data().mouseAction;
 
@@ -1944,7 +1941,7 @@ flipMethods = {
       if (animate) {
         
         var that = this,
-          point = (data.point && data.point.corner==c.corner) ?
+          point = (data.point && data.point.corner===c.corner) ?
           data.point : flipMethods._c.call(this, c.corner, 1);
       
         this.animatef({from: [point.x, point.y],
@@ -2024,7 +2021,7 @@ flipMethods = {
 
     if (animate) {
       var p4 = flipMethods._c.call(this, p1.corner),
-        top = (p1.corner.substr(0,1)=='t'),
+        top = (p1.corner.substr(0,1)==='t'),
         delta = (top) ? Math.min(0, p1.y-p4.y)/2 : Math.max(0, p1.y-p4.y)/2,
         p2 = point2D(p1.x, p1.y+delta),
         p3 = point2D(p4.x, p4.y-delta);
@@ -2347,9 +2344,9 @@ $.extend($.fn, {
           for (var i = 0; i < len; i++)
             v.push(data.effect.easing(1, timeDiff, point.from[i], diff[i], point.duration));
 
-          point.frame((len==1) ? v[0] : v);
+          point.frame((len===1) ? v[0] : v);
 
-          if (timeDiff==point.duration) {
+          if (timeDiff===point.duration) {
             delete data['effect'];
             that.data(data);
             if (point.complete)

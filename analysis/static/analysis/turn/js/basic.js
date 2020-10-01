@@ -7,7 +7,7 @@ function addPage(page, book) {
 	var id, pages = book.turn('pages');
 
 	// Create a new element for this page
-	var element = $('<div />', {});
+	var element = $('<div></div>', {});
 
 	// Add the page to the flipbook
 	if (book.turn('addPage', element, page)) {
@@ -89,6 +89,6 @@ function loadSmallPage(page, pageElement) {
 // http://code.google.com/p/chromium/issues/detail?id=128488
 function isChrome() {
 
-	return navigator.userAgent.indexOf('Chrome')!=-1;
+	return navigator.userAgent.indexOf('Chrome')!==-1;
 
 }

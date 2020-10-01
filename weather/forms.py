@@ -22,7 +22,7 @@ type_of_person_choices = (
 
 class input_form(forms.Form):
     type_of_person = forms.ChoiceField(label="Type of Person", choices=type_of_person_choices)
-    exercise = forms.ChoiceField(label="Exercise", choices=exercise_choices)
+    exercise = forms.ChoiceField(label="Method of Travel", choices=exercise_choices)
     unit = forms.ChoiceField(label="Unit", choices=unit_choices)
     zip_postal = forms.CharField(label="Zip/Postal Code", max_length=7)
 

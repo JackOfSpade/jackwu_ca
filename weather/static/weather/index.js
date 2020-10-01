@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
   function getCookie(name) {
       let cookieValue = null;
@@ -167,7 +165,7 @@ $(document).ready(function() {
       this.getY = function () {
         return this.y;
       };
-    };
+    }
   })();
 
   $(".spriteWrap").sprites();
@@ -257,7 +255,7 @@ $(document).ready(function() {
               uv_index_html +
               "</tr>");
 
-          if (results_matrix[3][0]) {
+          if (results_matrix[3]) {
             $("#results_table").append(
                 "<tr>" +
                 "<th>" + results_matrix[3][0] + "</th>" +

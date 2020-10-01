@@ -4,8 +4,9 @@ $(document).ready(function(){
 
 $(window).on("load", function () {
     $(".flipbook").mousedown(function(){
-          $(".arrow").fadeOut("slow");
-          $(".arrow").stop();
+        var arrow = $(".arrow")
+        arrow.fadeOut("slow");
+        arrow.stop();
       });
 
     var arrow = $(".arrow");
