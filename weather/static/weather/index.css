@@ -17,6 +17,7 @@
     font-size: 1em;
     line-height: 1.4;
     position: relative;
+    visibility: visible !important;
   }
 
   img {
@@ -1246,4 +1247,10 @@ option {
 
 .results_td{
   padding-left: 10px;
+}
+
+#loading{
+  height: 25px;
+  width: 25px;
+  margin-left: 45%;
 }

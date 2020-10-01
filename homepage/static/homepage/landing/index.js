@@ -28,13 +28,13 @@ $(document).ready(function() {
     function initialize(speed) {
         // Animation for button 1
         window.setTimeout(function () {
-            $(".weather_button").animate({
+            $(".stock_button").animate({
                 top: "32vh",
                 left: "33vw"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
-                $(".weather_button").hover(function () {
+                $(".stock_button").hover(function () {
                     $(this).animate({
                         opacity: "1"
                     });
@@ -48,12 +48,12 @@ $(document).ready(function() {
 
         // Animation for button 2
         window.setTimeout(function () {
-            $(".stock_button").animate({
+            $(".weather_button").animate({
                 top: "26vh"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
-                $(".stock_button").hover(function () {
+                $(".weather_button").hover(function () {
                     $(this).animate({
                         opacity: "1"
                     });
@@ -174,14 +174,12 @@ $(document).ready(function() {
         initialize(0)
     }
 
-    // $(".stock_button, .crime_button").click(function(){
-    //     $("body").fadeOut()
-    // });
-
-    // $(".weather_button").click(function(){
-    //     var base_url = window.location.origin;
-    //     location.href = base_url + "/weather/";
-    // });
+    $(".weather_button").click(function(){
+        var base_url = window.location.origin;
+        $("body").fadeOut("slow", function(){
+            location.href = base_url + "/weather/";
+        })
+    });
 
     $(".stock_button").click(function () {
         var base_url = window.location.origin;

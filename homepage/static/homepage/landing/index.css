@@ -83,16 +83,17 @@ button{
 }
 
 .weather_button{
-    top: -25vh;
-    left: -25vw;
-}
-
-.stock_button{
-    top: -25vh;
+     top: -25vh;
     left: 99vw;
     margin-left: -62.5px;
     margin-top: -62.5px;
     transform: translate(-50vw, 0vh);
+
+}
+
+.stock_button{
+   top: -25vh;
+    left: -25vw;
 }
 
 .crime_button{

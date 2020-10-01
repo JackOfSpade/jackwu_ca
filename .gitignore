@@ -1,4 +1,4 @@
 .env
 ML_reviews/static/ML_reviews/data/
 service_account_key.json
-config.ini
+weather/config.ini

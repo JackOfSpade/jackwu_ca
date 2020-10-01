@@ -41,7 +41,6 @@ class retrieve_info:
                 try:
                     return (response[0]["EnglishName"], response[0]["Key"])
                 except Exception as e:
-                    ctypes.windll.user32.MessageBoxW(0, "The zip/postal code you've entered is not supported.", "Oops!", 0)
                     print("Exception:" + str(e))
                     return None
 

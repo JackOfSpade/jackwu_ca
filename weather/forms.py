@@ -28,14 +28,13 @@ class input_form(forms.Form):
 
     def clean_zip_postal(self):
         data = self.cleaned_data["zip_postal"]
-        accuweather_api_key = retrieve_info_class.retrieve_info.get_accuweather_api_key(0)
+        accuweather_api_key = retrieve_info_class.retrieve_info.get_accuweather_api_key(9)
         location = retrieve_info_class.retrieve_info.get_location(accuweather_api_key, data)
 
         if location is None:
             raise ValidationError("Zip/postal code is invalid.")
 
+
         # Always return a value to use as the new cleaned data, even if
         # this method didn't change it.
         return data
-
-# FIX UNSUPPORTED POSTAL CODE POPUPM SHOULD BE IN PANEL INSTEAD OF POP-UP

@@ -1,4 +1,3 @@
-from ctypes import windll
 import weather.hourly_weather_class as hourly_weather_class
 import weather.retrieve_info_class as retrieve_info_class
 import os

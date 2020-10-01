@@ -6,7 +6,7 @@
         <title>Weather Insights</title>
     </head>
 
-    <body>
+    <body style="visibility: hidden;">
         <audio loop autoplay id="player">
             <source src="{% static "weather/forest_sound.mp3" %}" type="audio/mp3">
         </audio>
@@ -2042,7 +2042,6 @@
                     </tr>
                 </table>
             {% endif %}
-
         </section>
 
         <!--  Stag  -->
@@ -2153,6 +2152,7 @@
             <form action="/weather/" method="post" autocomplete="off" id="weather_form">
                 {% csrf_token %}
                 {{ form.non_field_errors }}
+                {{ form.errors }}
                 {{ error }}
                 <ul>
                     <li class="center_text">
@@ -2180,6 +2180,7 @@
                     </li>
                     <li>
                         <input id="go" type="submit" value="Go!">
+                        <img id="loading" src="{% static "weather/loading.gif" %}"/>
                     </li>
                 </ul>
             </form>
@@ -2195,8 +2196,4 @@
         <link rel="stylesheet" type="text/css" href="{% static "weather/index.css" %}">
         <script type="text/javascript" src="{% static "weather/index.js" %}"></script>
     </body>
-
-    <!-- ADD JQUERY INTERFACE, LINK THIS TO WEATHER APP AND FADE-IN/FADE-OUT RESULTING TEXT  -->
-    <!-- Check for invalid zip code (maybe already implemented)-->
-    <!-- hide panel after pressing go -->
 </html>

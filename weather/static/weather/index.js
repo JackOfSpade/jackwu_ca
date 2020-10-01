@@ -32,6 +32,10 @@ $(document).ready(function() {
       }
   });
 
+  var results_table = $("#results_table")
+  var go = $("#go");
+  var loading = $("#loading");
+
   $("html").one( "click", function() {
     const player = $("#player")
     player.get(0).play();
@@ -207,10 +211,21 @@ $(document).ready(function() {
     return html;
   }
 
+  loading.hide()
+
   $("#weather_form").on("submit", function(event){
-  // $("#go").click(function(){
+    go.hide();
+    go.prop("disabled", true);
+    loading.show();
+
+
     //Prevent default django post behaviour for a form submission.
     event.preventDefault();
+
+    results_table.hide();
+    results_table.find("tr").remove();
+    var id_zip_postal = $("#id_zip_postal");
+    id_zip_postal.tooltip({position: {my: "right-75 center", at: "center"}});
 
     $.ajax({
       url: "/weather/",
@@ -218,48 +233,71 @@ $(document).ready(function() {
       data: {type_of_person: $("#id_type_of_person").val(),
         exercise: $("#id_exercise").val(),
         unit: $("#id_unit").val(),
-        zip_postal: $("#id_zip_postal").val()},
+        zip_postal: id_zip_postal.val()},
       dataType: "json",
       success: function (data){
         results_matrix = data["results_matrix"];
 
-        $("#results_table tr").remove();
+        if(results_matrix[0][1]) {
+          var time_html = convert_to_html(results_matrix[0][1]);
+          var temperature_html = convert_to_html(results_matrix[1][1]);
+          var uv_index_html = convert_to_html(results_matrix[2][1]);
 
-        var time_html = convert_to_html(results_matrix[0][1]);
-        var temperature_html = convert_to_html(results_matrix[1][1]);
-        var uv_index_html = convert_to_html(results_matrix[2][1]);
-
-        $("#results_table").append(
-            "<tr>" +
+          results_table.append(
+              "<tr>" +
               "<th>" + results_matrix[0][0] + "</th>" +
               time_html +
-            "</tr>" +
-            "<tr>" +
+              "</tr>" +
+              "<tr>" +
               "<th>" + results_matrix[1][0] + "</th>" +
               temperature_html +
-            "</tr>" +
-            "<tr>" +
+              "</tr>" +
+              "<tr>" +
               "<th>" + results_matrix[2][0] + "</th>" +
               uv_index_html +
-            "</tr>");
+              "</tr>");
 
-        if (results_matrix[3][0])
-        {
-           $("#results_table").append(
-            "<tr>" +
-              "<th>" + results_matrix[3][0] + "</th>" +
-            "</tr>");
+          if (results_matrix[3][0]) {
+            $("#results_table").append(
+                "<tr>" +
+                "<th>" + results_matrix[3][0] + "</th>" +
+                "</tr>");
+          }
         }
+        else
+        {
+          results_table.append(
+              "<tr>" +
+              "<th>" + results_matrix[0] + "</th>"  +
+              "</tr>" +
+              "<tr>" +
+              "<th>" + results_matrix[1] + "</th>" +
+              "</tr>" +
+              "<tr>" +
+              "<th>" + results_matrix[2] + "</th>" +
+              "</tr>");
+        }
+
+        results_table.fadeIn("slow");
+        loading.hide();
+        go.prop("disabled", false);
+        go.show();
       },
       error: function(xhr,errmsg,err) {
-        $("html").innerHTML = "";
-        $("html").prepend("<body><div id='dialog'><p>" + xhr.responseText + "</p></div></body>");
-        $( "#dialog" ).dialog({
-          maxHeight: window.innerHeight - 15,
-          overflow:"scroll"
-        });
+        id_zip_postal.prop("title", "Zip/postal code is invalid.");
+        id_zip_postal.tooltip("enable");
+        id_zip_postal.trigger('mouseenter');
+
+        window.setTimeout(function () {
+          id_zip_postal.prop("title", "");
+          id_zip_postal.tooltip("disable");
+          }, 3000);
+
+        loading.hide();
+        go.prop("disabled", false);
+        go.show();
       }
     });
   });
-});
+})
 
