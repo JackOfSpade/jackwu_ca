@@ -26,9 +26,7 @@ services:
     command: bash -c "python manage.py collectstatic --no-input &&
                       python manage.py makemigrations &&
                       python manage.py migrate &&
-                      mod_wsgi-express start-server /jackwu_ca/jackwu_ca/wsgi.py --port=80 --user www-data --group www-data"
-                      # Testing only:
-                      # && python manage.py runserver 0.0.0.0:80"
+                      python manage.py runserver 0.0.0.0:80"
     volumes:
       - type: volume
         source: web_service_volume
