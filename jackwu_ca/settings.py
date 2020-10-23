@@ -23,7 +23,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "analysis", "static"),
 ]
 
-
 # Where static files are collected after collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
