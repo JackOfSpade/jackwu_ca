@@ -1,63 +1,9 @@
 import glob
 import os
-import re
 
 import numpy as np
-import matplotlib.pyplot as plt
 import ML_reviews.evaluation as evaluation
 import ML_reviews.models as models
-
-def graph(x, y, theta, theta_0, title):
-    x_plus = np.empty(shape=(2, 0))
-    x_minus = np.empty(shape=(2, 0))
-
-    # Append columns of x to correct matrix categories.
-    for i in np.arange(start=0, stop=y.size, step=1):
-        if y[i] == 1:
-            x_plus = np.append(arr=x_plus, values=x[:, i:i+1], axis=1)
-        elif y[i] == -1:
-            x_minus = np.append(arr=x_minus, values=x[:, i:i+1], axis=1)
-
-    figure1, axes1 = plt.subplots(nrows=1, ncols=1)
-    axes1.set_aspect(aspect="equal", adjustable='datalim')
-    axes1.set_title(label=title)
-
-    # Plot x_plus
-    x_1 = x_plus[0, :]
-    x_2 = x_plus[1, :]
-
-    axes1.plot(x_1, x_2, marker="+", linewidth=0, color="g")
-
-    # Plot x_minus
-    x_1 = x_minus[0, :]
-    x_2 = x_minus[1, :]
-
-    axes1.plot(x_1, x_2, marker="_", linewidth=0, color="r")
-
-    # Plot theta
-    axes1.arrow(x=0, y=0, dx=theta[0, 0], dy=theta[1, 0], head_width=0.05, length_includes_head=True)
-
-    # Plot linear hyperplane
-    xs = np.array(object=[-3, -2, -1, 0, 1, 2, 3])
-
-    if theta[1, 0] != 0:
-        # (theta_1)x + (theta_2)y + theta_0 = 0
-        # y = -(theta_1 / theta_2)x - theta_0 / theta_2
-        ys = - (theta[0, 0] / theta[1, 0]) * xs - theta_0 / theta[1, 0]
-        axes1.plot(xs, ys, marker="None", linestyle="-")
-    elif theta[0, 0] != 0:
-        # We have a vertical linear hyperplane.
-        # (theta_1)x + (theta_2)y + theta_0 = 0
-        # (theta_1)x + (0)y + theta_0 = 0
-        # x = -theta_0 / theta_1
-        axes1.axvline(x=-theta_0 / theta[0, 0])
-    else:
-        pass
-
-
-
-    figure1.savefig(fname=re.sub(pattern="\s+", repl="_", string=axes1.get_title()))
-    plt.close(figure1)
 
 # Pre-conditions:
 # data must be a ndarray matrix of dtype float
@@ -98,10 +44,6 @@ def perceptron(data, labels, T, averaged=False, graph=False):
             if y[i] * (np.matmul(np.transpose(theta), x[:, i:i+1])[0, 0] + theta_0) <= 0:
                 theta = theta + y[i] * x[:, i:i+1]
                 theta_0 = theta_0 + y[i]
-
-                # For graphing
-                if graph and dimension == 2:
-                    graph(x, y, theta, theta_0, title + t)
 
                 # Mistakes still present when T is reached.
                 # if t == T - 1:
