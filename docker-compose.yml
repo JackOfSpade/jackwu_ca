@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   db_service:
-    image: postgres
+    image: postgres:13
     environment:
       - POSTGRES_DB=${db_name}
       - POSTGRES_USER=${db_user}
@@ -25,7 +25,7 @@ services:
     command: bash -c "python manage.py collectstatic --no-input &&
                       python manage.py makemigrations &&
                       python manage.py migrate &&
-                      python manage.py runserver 0.0.0.0:80"
+                      gunicorn --bind 0.0.0.0:80 myproject.wsgi"
     volumes:
       - type: volume
         source: web_service_volume

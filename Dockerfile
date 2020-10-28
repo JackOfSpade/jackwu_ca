@@ -12,4 +12,5 @@ COPY . /jackwu_ca
 
 RUN pip install -r requirements.txt && \
     pip install django-storages && \
-    pip install google-cloud-storage
+    pip install google-cloud-storage && \
+    pip install gunicorn
