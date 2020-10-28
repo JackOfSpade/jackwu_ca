@@ -25,7 +25,7 @@ services:
     command: bash -c "python manage.py collectstatic --no-input &&
                       python manage.py makemigrations &&
                       python manage.py migrate &&
-                      gunicorn --bind 0.0.0.0:80 myproject.wsgi"
+                      gunicorn --bind 0.0.0.0:80 jackwu_ca.wsgi"
     volumes:
       - type: volume
         source: web_service_volume
