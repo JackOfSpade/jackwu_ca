@@ -14,6 +14,6 @@ workers = 4
 #       A positive integer. Generally set in the 1-5 seconds range.
 keepalive = 5
 
-keyfile = "privkey.pem"
-certfile = "cert.pem"
-ca_certs = "chain.pem"
+keyfile = "private.key"
+certfile = "certificate.crt"
+ca_certs = "ca_bundle.crt"
