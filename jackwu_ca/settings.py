@@ -49,7 +49,7 @@ DEBUG = False
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]", "jackwu.ca", ".jackwu.ca", "0.0.0.0", "_acme-challenge.jackwu.ca"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]", "jackwu.ca", ".jackwu.ca", "0.0.0.0"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
