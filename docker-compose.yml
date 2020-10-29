@@ -31,7 +31,7 @@ services:
         source: web_service_volume
         target: /jackwu_ca/web_service_volume
     ports:
-      - "80:80"
+      - "443:443"
     depends_on:
       - db_service
 
