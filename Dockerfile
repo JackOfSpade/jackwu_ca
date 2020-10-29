@@ -16,7 +16,6 @@ RUN apt-get -y update && \
     pip install django-storages && \
     pip install google-cloud-storage && \
     pip install gunicorn && \
-    # SSL-certificate
     apt-get -y install snapd && \
     snap install core && \
     snap refresh core && \
