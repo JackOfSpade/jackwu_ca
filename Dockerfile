@@ -16,6 +16,7 @@ RUN apt-get -y update && \
     pip install django-storages && \
     pip install google-cloud-storage && \
     pip install gunicorn && \
+    # SSL-certificate -----------------------------
     apt-get -y install snapd && \
     snap install core && \
     snap refresh core && \
@@ -23,3 +24,4 @@ RUN apt-get -y update && \
     snap install --classic certbot && \
     ln -s /snap/bin/certbot /usr/bin/certbot && \
     certbot certonly --standalone
+    # ---------------------------------------------
