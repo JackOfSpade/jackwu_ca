@@ -17,10 +17,10 @@ RUN apt-get -y update && \
     pip install google-cloud-storage && \
     pip install gunicorn
     # SSL-certificate
-    apt-get -y install snapd
-    snap install core
-    snap refresh core
-    apt-get remove certbot
-    snap install --classic certbot
-    ln -s /snap/bin/certbot /usr/bin/certbot
+    apt-get -y install snapd && \
+    snap install core && \
+    snap refresh core && \
+    apt-get remove certbot && \
+    snap install --classic certbot && \
+    ln -s /snap/bin/certbot /usr/bin/certbot && \
     certbot certonly --standalone
