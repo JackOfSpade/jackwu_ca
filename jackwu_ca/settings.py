@@ -49,7 +49,7 @@ DEBUG = False
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]", "jackwu.ca", ".jackwu.ca", "0.0.0.0"]
+ALLOWED_HOSTS = ["https://www.jackwu.ca"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -128,3 +128,4 @@ SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_BROWSER_XSS_FILTER = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE=True
