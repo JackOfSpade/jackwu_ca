@@ -3,7 +3,7 @@
 #       A string of the form: 'HOST', 'HOST:PORT', 'unix:PATH'.
 #       An IP is a valid HOST.
 
-bind = "0.0.0.0:80"
+bind = "0.0.0.0:443"
 
 #   workers - The number of worker processes that this server
 #       should keep alive for handling requests.

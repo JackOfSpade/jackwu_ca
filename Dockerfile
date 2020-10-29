@@ -18,6 +18,7 @@ RUN apt-get -y update && \
     pip install gunicorn && \
     apt-get -y update && \
     apt-get -y upgrade
+
     # SSL-certificate (run this before docker-compose up) -----------------------------
 #    apt-get -y install snapd
 #    service snapd start
