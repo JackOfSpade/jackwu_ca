@@ -49,7 +49,7 @@ DEBUG = False
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-ALLOWED_HOSTS = ["https://www.jackwu.ca"]
+ALLOWED_HOSTS = ["https://www.jackwu.ca", "https://jackwu.ca", "https://0.0.0.0"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
