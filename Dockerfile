@@ -10,13 +10,15 @@ WORKDIR /jackwu_ca
 
 COPY . /jackwu_ca
 
-RUN pip install -r requirements.txt && \
+RUN apt-get -y update && \
+    apt-get -y upgrade && \
+    pip install -r requirements.txt && \
     pip install django-storages && \
     pip install google-cloud-storage && \
     pip install gunicorn && \
     # SSL-certificate -----------------------------
     apt-get -y install snapd && \
-    systemctl restart snapd snapd.socket && \
+#    systemctl restart snapd snapd.socket && \
     snap install core && \
     snap refresh core && \
     apt-get remove certbot && \
