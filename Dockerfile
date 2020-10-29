@@ -18,7 +18,9 @@ RUN apt-get -y update && \
     pip install gunicorn && \
     # SSL-certificate -----------------------------
     apt-get -y install snapd && \
-#    systemctl restart snapd snapd.socket && \
+    systemctl restart snapd snapd.socket && \
+    service snapd start && \
+    systemctl start snapd.service && \
     snap install core && \
     snap refresh core && \
     apt-get remove certbot && \
