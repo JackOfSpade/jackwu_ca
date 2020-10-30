@@ -12,7 +12,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Any usage of cryptographic signing.
 
 # ------------------------------- Change here when alternating between production and dev ------------------------------
-
 import google.oauth2.service_account as service_account
 
 # Where to find static files to collect
@@ -49,7 +48,8 @@ DEBUG = False
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]", "jackwu.ca", ".jackwu.ca", "0.0.0.0"]
+ALLOWED_HOSTS = ["jackwu.ca", ".jackwu.ca"]
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -121,5 +121,11 @@ USE_TZ = True
 
 SESSION_COOKIE_SECURE = True
 
-# Need HTTPS connection
-# CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+# 31536000
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE=True
