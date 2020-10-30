@@ -30,8 +30,10 @@ services:
       - type: volume
         source: static_volume
         target: /jackwu_ca/static_volume
+    ports:
+      - 443:443
     expose:
-      - 8000
+      - 443
     depends_on:
       - db_service
   nginx:
