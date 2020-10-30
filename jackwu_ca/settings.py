@@ -21,10 +21,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "analysis", "static"),
 ]
 
-STATIC_URL = "/staticfiles/"
+STATIC_URL = "/static/"
 
 # Where static files are collected after collectstatic
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
