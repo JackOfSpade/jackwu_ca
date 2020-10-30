@@ -16,7 +16,7 @@ RUN apt-get -y update && \
     pip install -r requirements.txt && \
     pip install django-storages && \
     pip install gunicorn && \
-    mkdir /jackwu/static && \
+    mkdir static && \
     apt-get -y update && \
     apt-get -y upgrade
 
