@@ -26,10 +26,10 @@ services:
                       python manage.py makemigrations &&
                       python manage.py migrate &&
                       gunicorn -c gunicorn.conf.py jackwu_ca.wsgi"
-    volumes:
-      - type: volume
-        source: static_volume
-        target: /jackwu_ca/static
+    #volumes:
+    #  - type: volume
+    #    source: static_volume
+    #    target: /jackwu_ca/static
     ports:
       - 443:443
     expose:
@@ -39,10 +39,10 @@ services:
   nginx:
     build: ./nginx
     working_dir: /jackwu_ca
-    volumes:
-      - type: volume
-        source: static_volume
-        target: /jackwu_ca/static
+    #volumes:
+    #  - type: volume
+    #    source: static_volume
+    #    target: /jackwu_ca/static
     ports:
       - 80:80
     depends_on:
@@ -50,4 +50,4 @@ services:
 
 volumes:
   db_service_volume:
-  static_volume:
+  #static_volume:
