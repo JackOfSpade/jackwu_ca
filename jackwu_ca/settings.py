@@ -43,8 +43,7 @@ DEBUG = False
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-# ALLOWED_HOSTS = ["jackwu.ca", ".jackwu.ca"]
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["jackwu.ca", ".jackwu.ca"]
 
 
 INSTALLED_APPS = [
