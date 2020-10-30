@@ -13,8 +13,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # ------------------------------- Change here when alternating between production and dev ------------------------------
 
-import google.oauth2.service_account as service_account
-
 # Where to find static files to collect
 STATICFILES_DIRS = [
     # os.path.join(BASE_DIR, "ML_reviews", "static"),
@@ -23,14 +21,17 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "analysis", "static"),
 ]
 
+STATIC_URL = "/staticfiles/"
+
 # Where static files are collected after collectstatic
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+
 
 DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 GS_BUCKET_NAME = "jackwu.ca"
 STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-STATIC_URL = "https://storage.googleapis.com/jackwu.ca/"
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file("service_account_key.json")
+
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
