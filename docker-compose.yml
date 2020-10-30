@@ -41,7 +41,7 @@ services:
         source: static_volume
         target: /jackwu_ca/static_volume
     ports:
-      - 1337:80
+      - 80:80
     depends_on:
       - web_service
 
