@@ -26,13 +26,6 @@ STATIC_URL = "/staticfiles/"
 # Where static files are collected after collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-
-
-DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-GS_BUCKET_NAME = "jackwu.ca"
-STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-
-
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 DATABASES = {
