@@ -10,7 +10,7 @@ services:
     volumes:
       - type: volume
         source: db_service_volume
-        target: //db_service_volume
+        target: /jackwu_ca/db_service_volume
   web_service:
     build: .
     environment:
