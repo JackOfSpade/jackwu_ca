@@ -31,7 +31,7 @@ services:
         source: static_volume
         target: /jackwu_ca/static_volume
     expose:
-      - 443
+      - 8000
     depends_on:
       - db_service
   nginx:
