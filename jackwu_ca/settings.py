@@ -12,7 +12,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Any usage of cryptographic signing.
 
 # ------------------------------- Change here when alternating between production and dev ------------------------------
-
 import google.oauth2.service_account as service_account
 
 # Where to find static files to collect
@@ -50,6 +49,7 @@ DEBUG = False
 # ----------------------------------------------------------------------------------------------------------------------
 
 ALLOWED_HOSTS = ["jackwu.ca", ".jackwu.ca"]
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
