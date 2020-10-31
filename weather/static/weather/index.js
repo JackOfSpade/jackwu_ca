@@ -172,6 +172,7 @@ $(document).ready(function() {
 
   controls = $(".controls")
 
+  // Auto-Hide -------------------------------------------
   // controls.hover(function(){
   //   controls.css({
   //     "transform": "translate3d(0px, 0px, 0px)",
@@ -183,7 +184,7 @@ $(document).ready(function() {
   //   });
   // });
 
-  // Auto-Hide
+
   // controls.mouseleave(function(){
   //   controls.css({
   //     "transform": "translate3d(-250px, 0px, 0px)",
@@ -194,7 +195,7 @@ $(document).ready(function() {
   //     "margin-left": "1%"
   //   });
   // });
-
+  // --------------------------------------------------------
   function convert_to_html(list_or_string) {
     var element;
     var html = "";
