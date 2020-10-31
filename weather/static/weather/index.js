@@ -172,16 +172,17 @@ $(document).ready(function() {
 
   controls = $(".controls")
 
-  controls.hover(function(){
-    controls.css({
-      "transform": "translate3d(0px, 0px, 0px)",
-      "opacity": "1"
-    });
-
-    $("#results_table").css({
-      "margin-left": "21%"
-    });
-  });
+  // Auto-hide
+  // controls.hover(function(){
+  //   controls.css({
+  //     "transform": "translate3d(0px, 0px, 0px)",
+  //     "opacity": "1"
+  //   });
+  //
+  //   $("#results_table").css({
+  //     "margin-left": "21%"
+  //   });
+  // });
 
   controls.mouseleave(function(){
     controls.css({
