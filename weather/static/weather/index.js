@@ -172,7 +172,6 @@ $(document).ready(function() {
 
   controls = $(".controls")
 
-  // Auto-hide
   // controls.hover(function(){
   //   controls.css({
   //     "transform": "translate3d(0px, 0px, 0px)",
@@ -184,16 +183,17 @@ $(document).ready(function() {
   //   });
   // });
 
-  controls.mouseleave(function(){
-    controls.css({
-      "transform": "translate3d(-250px, 0px, 0px)",
-      "opacity": "0"
-    });
-
-    $("#results_table").css({
-      "margin-left": "1%"
-    });
-  });
+  // Auto-Hide
+  // controls.mouseleave(function(){
+  //   controls.css({
+  //     "transform": "translate3d(-250px, 0px, 0px)",
+  //     "opacity": "0"
+  //   });
+  //
+  //   $("#results_table").css({
+  //     "margin-left": "1%"
+  //   });
+  // });
 
   function convert_to_html(list_or_string) {
     var element;

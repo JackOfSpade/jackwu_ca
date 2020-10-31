@@ -498,8 +498,6 @@
     background: rgba(0, 0, 0, 0.16);
     height: 100%;
     padding: 23px;
-    /*transform: translate3d(-250px, 0px, 0px);*/
-    /*opacity: 0;*/
     transform: translate3d(0px, 0px, 0px);
     opacity: 1.0;
   }
@@ -508,11 +506,6 @@
     box-sizing: border-box;
     transition: all 0.25s ease;
   }
-
-  /*.controls:hover{*/
-  /*  transform: translate3d(0px, 0px, 0px);*/
-  /*  opacity: 1.0;*/
-  /*}*/
 
   .controls ul{
     margin: 0;
