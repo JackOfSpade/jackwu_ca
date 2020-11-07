@@ -1,4 +1,8 @@
 .env
+.aws
 ML_reviews/static/ML_reviews/data/
 service_account_key.json
 weather/config.ini
+ca_bundle.crt
+certificate.crt
+private.key

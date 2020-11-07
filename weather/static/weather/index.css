@@ -40,7 +40,7 @@
   #landscape, .land, #bottom, .stags,.stag, #lensFlare, .sunMask{
     animation-duration: 60s;
     animation-iteration-count: infinite;
-    animation-timing-function: linear;  
+    animation-timing-function: linear;
   }
 
 /* Background gradients
@@ -90,7 +90,7 @@
     animation-delay:1s;
   }
 
-  @keyframes stags{ 
+  @keyframes stags{
     0% { fill:#0D141E;}
     4% { fill:#101522;}
     8% { fill:#121726;}
@@ -123,10 +123,10 @@
     animation-name: stag_one;
     width: 108%;
     left: -20%;
-    
+
   }
 
-  @keyframes stag_one{ 
+  @keyframes stag_one{
     0% {opacity:1.0;}
     15% {opacity:1.0;}
     20% {opacity:0.0;}
@@ -139,7 +139,7 @@
     animation-name: stag_two;
   }
 
-  @keyframes stag_two{ 
+  @keyframes stag_two{
     0% {opacity:0.0;}
     17% {opacity:0.0;}
     20% {opacity:1.0;}
@@ -159,7 +159,7 @@
     bottom: -3%;
   }
 
-  @keyframes stag_three{ 
+  @keyframes stag_three{
     0% {opacity:0.0;}
     15% {opacity:0.0;}
     20% {opacity:0.0;}
@@ -177,11 +177,11 @@
     width:100%;
     height:100%;
     z-index: 4;
-    mix-blend-mode: screen;  
+    mix-blend-mode: screen;
     animation-name: sunFocus;
   }
 
-  @keyframes sunFocus{ 
+  @keyframes sunFocus{
     0% { filter: blur(10px);opacity:0;}
     16% {filter: blur(10px);}
     20% {filter: blur(10px);}
@@ -195,7 +195,7 @@
   .sun{
     width: 100%;
     padding-bottom: 100%;
-    position:absolute;   
+    position:absolute;
     right: -51%;
     top: -330%;
   }
@@ -207,7 +207,7 @@
   }
 
   .suncrane{
-    animation: suncrane 60s linear infinite; 
+    animation: suncrane 60s linear infinite;
     position:absolute;
     width: 21%;
     height: 4%;
@@ -218,15 +218,15 @@
     right: 0;
   }
 
-  @keyframes suncrane{ 
+  @keyframes suncrane{
     0% {transform:rotate(90deg);}
     100% {transform:rotate(-270deg);}
   }
 
   .sun:before{
-    display:block; 
-    content:' '; 
-    animation: glare 60s linear infinite;  
+    display:block;
+    content:' ';
+    animation: glare 60s linear infinite;
     position:absolute;
     width: 120%;
     height: 120%;
@@ -234,9 +234,9 @@
     top: -10%;
     left: -10%;
     background-size: 100%;
-  } 
+  }
 
-  @keyframes glare{ 
+  @keyframes glare{
     from {transform:rotate(90deg);opacity:0.0;}
     30%{opacity:0.0;}
     36%{opacity:1.0;}
@@ -279,11 +279,11 @@
     left: -60%;
     animation-duration: 60s;
     animation-iteration-count: infinite;
-    animation-timing-function: linear;  
+    animation-timing-function: linear;
   animation-name: clouds;
   }
 
-  @keyframes clouds{ 
+  @keyframes clouds{
     0% {transform: translate3d(110%, 0px, 0px);opacity: 0.0;}
     19%{opacity: 0.0;filter: blur(5px);}
     25%{opacity: 0.3;filter: blur(2px);}
@@ -299,7 +299,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 8;  
+    z-index: 8;
     opacity: 0.3;
     mix-blend-mode: screen;
     pointer-events: none;
@@ -310,16 +310,16 @@
     width: 100%;
   }
 
-  #lensFlare{ 
-    transform: rotate(16deg) translate3d(9%, -47%, 0px) scale(1); 
+  #lensFlare{
+    transform: rotate(16deg) translate3d(9%, -47%, 0px) scale(1);
     animation-name: flaring;
   }
 
-  @keyframes flaring{ 
+  @keyframes flaring{
     0% { transform: rotate(16deg) translate3d(9%, -47%, 0px) scale(1); opacity: 0.0;}
     28% { transform: rotate(16deg) translate3d(9%, -47%, 0px) scale(1); opacity: 0.0; }
     35% { transform: rotate(16deg) translate3d(9%, -47%, 0px) scale(1); opacity: 1.0; }
-    70% { transform: rotate(16deg) translate3d(9%, -47%, 0px) scale(1); opacity: 1.0; } 
+    70% { transform: rotate(16deg) translate3d(9%, -47%, 0px) scale(1); opacity: 1.0; }
     78% { transform: rotate(16deg) translate3d(9%, -47%, 0px) scale(1); opacity: 0.0; }
     100% { transform: rotate(16deg) translate3d(9%, -47%, 0px) scale(1); opacity: 0.0; }
   }
@@ -331,7 +331,7 @@
     z-index: 4;
     width:100%;
     height:100%;
-    top:0; 
+    top:0;
     opacity: 0.55;
   }
 
@@ -342,7 +342,7 @@
       top: 72.5%;
       animation: twinkles 60s linear infinite;
   }
-  @keyframes twinkles{ 
+  @keyframes twinkles{
     0% {transform: translate(450%, 0%);opacity:0.0;}
     32%{opacity:0.0;}
     34%{opacity:1.0;}
@@ -353,7 +353,7 @@
     100% {transform: translate(-450%, 0%);opacity:0.0;}
   }
   .twinkles:before{
-    content:' '; 
+    content:' ';
     display: none;
     position:absolute;
     height: 600px;
@@ -370,7 +370,7 @@
   #twinkle1{
     animation: twinkle1 2s linear infinite;
   }
-  @keyframes twinkle1{ 
+  @keyframes twinkle1{
     0% {opacity:1.0;}
     33.33% {opacity:0.0;}
     66.66% {opacity:0.0;}
@@ -379,7 +379,7 @@
   }
   #twinkle2{  animation: twinkle2 2s linear infinite;
   }
-  @keyframes twinkle2{ 
+  @keyframes twinkle2{
     0% {opacity:0.0;}
     33.33% {opacity:1.0;}
     66.66% {opacity:0.0;}
@@ -388,7 +388,7 @@
   }
   #twinkle3{ animation: twinkle3 2s linear infinite;
   }
-  @keyframes twinkle3{ 
+  @keyframes twinkle3{
     0% {opacity:0.0;}
     33.33% {opacity:0.0;}
     66.66% {opacity:1.0;}
@@ -404,7 +404,7 @@
     height: 100%;
     z-index: 9;
     position: absolute;
-    width: 100%; 
+    width: 100%;
     pointer-events: none;
 }
 
@@ -414,13 +414,13 @@
     height: 100%;
     z-index: 2;
     position: absolute;
-    width: 100%; 
-     
+    width: 100%;
+
     overflow: hidden;
   }
   .starWrap{
     height: 60%;
-    width: 100%; 
+    width: 100%;
     position:relative;
   }
   .starProject{
@@ -439,12 +439,12 @@
     margin: auto;
     left: -10%;
     right: 0;
-    animation: stars 120s linear infinite;  
+    animation: stars 120s linear infinite;
     transform: rotate(0deg);
     top: -35%;
   }
 
-  @keyframes stars{ 
+  @keyframes stars{
     100% {transform: rotate(-360deg);}
   }
 
@@ -455,26 +455,26 @@
     margin: auto;
     left: -10%;
     right: 0;
-    animation: starsReflect 120s linear infinite;  
+    animation: starsReflect 120s linear infinite;
     transform: rotate(0deg);
     top:initial;
     bottom: -102%;
   }
-  @keyframes starsReflect{ 
+  @keyframes starsReflect{
     100% {transform: rotate(360deg);}
   }
 
-/* Sprites 
+/* Sprites
   ----------------------------------------------- */
   .spriteWrap{
     height: 100%;
     width: 100%;
     position: absolute;
     z-index: 13;
-    animation: sprites 60s linear infinite;    
+    animation: sprites 60s linear infinite;
     pointer-events: none;
   }
-  @keyframes sprites{ 
+  @keyframes sprites{
     0% {opacity:0.8;}
     20% {opacity:0.8;}
     25%{opacity:0.0;}
@@ -552,7 +552,7 @@
     opacity:1.0;
   }
 
-  @keyframes timer{ 
+  @keyframes timer{
     0% { width:0; }
     100% { width:100%; }
   }
@@ -567,7 +567,7 @@
     animation-name: focus;
   }
 
-   @keyframes focus{ 
+   @keyframes focus{
     0% { filter: blur(5px);}
     16% {filter: blur(2px);}
     20% {filter: blur(0px);}
@@ -586,7 +586,7 @@
     animation-delay:1s;
   }
 
-  @keyframes bottomFill{ 
+  @keyframes bottomFill{
     0% { background:#0D141E; }
     4% { background:#101522; }
     8% { background:#121726; }
@@ -622,7 +622,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer1{ 
+  @keyframes layer1{
     0% { fill:#244154; }
     4% { fill:#344358; }
     8% { fill:#42465D; }
@@ -658,7 +658,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer2{ 
+  @keyframes layer2{
     0% { fill:#0F2B46; }
     4% { fill:#1C2D4A; }
     8% { fill:#272E4E; }
@@ -694,7 +694,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer3{ 
+  @keyframes layer3{
     0% { fill:#0F2944; }
     4% { fill:#1B2B47; }
     8% { fill:#252C4B; }
@@ -730,7 +730,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer4{ 
+  @keyframes layer4{
     0% { fill:#0F2841; }
     4% { fill:#1A2945; }
     8% { fill:#232A48; }
@@ -766,7 +766,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer5{ 
+  @keyframes layer5{
     0% { fill:#0E263F; }
     4% { fill:#192742; }
     8% { fill:#212745; }
@@ -802,7 +802,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer6{ 
+  @keyframes layer6{
     0% { fill:#0E243C; }
     4% { fill:#18253F; }
     8% { fill:#202542; }
@@ -838,7 +838,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer7{ 
+  @keyframes layer7{
     0% { fill:#102237; }
     4% { fill:#18223A; }
     8% { fill:#1E233D; }
@@ -874,7 +874,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer8{ 
+  @keyframes layer8{
     0% { fill:#111F31; }
     4% { fill:#172034; }
     8% { fill:#1C2037; }
@@ -910,7 +910,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer9{ 
+  @keyframes layer9{
     0% { fill:#111C2B; }
     4% { fill:#151D2E; }
     8% { fill:#191E32; }
@@ -946,7 +946,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer10{ 
+  @keyframes layer10{
     0% { fill:#101825; }
     4% { fill:#131928; }
     8% { fill:#161A2C; }
@@ -982,7 +982,7 @@
       animation-delay:1s;
   }
 
-  @keyframes layer11{ 
+  @keyframes layer11{
     0% { fill:#0D141E;  transform: skew(0deg, 0deg) translate3d(0px, 0px, 0px);}
     4% { fill:#101522;  transform: skew(1deg, 0deg) translate3d(-0.5%, 0px, 0px);}
     8% { fill:#121726;  transform: skew(0deg, 0deg) translate3d(0px, 0px, 0px);}
