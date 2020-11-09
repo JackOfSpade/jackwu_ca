@@ -10,19 +10,23 @@ from playsound import playsound
 def amazon_polly(text, voice, speed):
     # Create a client using the credentials and region defined in the [adminuser]
     # section of the AWS credentials file (~/.aws/credentials).
-    session = Session(profile_name="default")
-    polly = session.client("polly")
+    try:
+        session = Session(profile_name="default")
+        polly = session.client("polly")
+    except Exception as e:
+        return "Session authentication exception: " + str(e)
 
     try:
         # Request speech synthesis
         response = polly.synthesize_speech(Text='<speak><prosody rate="' + speed + '%">' + text + "</prosody></speak>", TextType="ssml", OutputFormat="mp3",
                                            VoiceId=voice)
     except (BotoCoreError, ClientError) as error:
-        # The service returned an error, exit gracefully
-        print(error)
-        sys.exit(-1)
+        return "The service returned an error"
 
-    os.remove("speech.mp3")
+    try:
+        os.remove("speech.mp3")
+    except OSError:
+        pass
 
     # Access the audio stream from the response
     if "AudioStream" in response:
@@ -38,10 +42,8 @@ def amazon_polly(text, voice, speed):
                 with open(output, "wb") as file:
                     file.write(stream.read())
             except IOError as error:
-                # Could not write to file
                 return "Could not write to file: " + str(error)
     else:
-        # The response didn't contain audio data
         return "No AudioStream in response object."
 
     return "No issues with Amazon Polly"
