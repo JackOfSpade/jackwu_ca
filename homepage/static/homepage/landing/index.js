@@ -87,13 +87,13 @@ $(document).ready(function() {
 
         // Animation for button 4
         window.setTimeout(function () {
-            $(".review_button").animate({
+            $(".text_speech_button").animate({
                 bottom: "32vh",
                 right: "33vw"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
-                $(".review_button").hover(function () {
+                $(".text_speech_button").hover(function () {
                     $(this).animate({
                         opacity: "1"
                     });
@@ -107,12 +107,12 @@ $(document).ready(function() {
 
         // Animation for button 5
         window.setTimeout(function () {
-            $(".under_construction1").animate({
+            $(".review_button").animate({
                 bottom: "17vh"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
-                $(".under_construction1").hover(function () {
+                $(".review_button").hover(function () {
                     $(this).animate({
                         opacity: "1"
                     });
@@ -163,7 +163,7 @@ $(document).ready(function() {
             // Wait a moment after first click
             window.setTimeout(function () {
                 initialize(4500)
-            }, 1500);
+            }, 1000);
         });
 
         sessionStorage.setItem("dontLoad", "true");
@@ -195,18 +195,25 @@ $(document).ready(function() {
         })
     });
 
+     $(".text_speech_button").click(function(){
+        var base_url = window.location.origin;
+        $("body").fadeOut("slow", function(){
+            location.href = base_url + "/text_speech/";
+        })
+    });
+
     // $(".review_button").click(function(){
     //     var base_url = window.location.origin;
-    //     location.href = base_url + "/ML_reviews/";
+    //     $("body").fadeOut("slow", function(){
+    //         location.href = base_url + "/.../";
+    //     })
     // });
-
-    //  $(".under_construction1").click(function(){
-    //     var base_url = window.location.origin;
-    //     location.href = base_url + "";
-    // });
-
+    //
+    //
     // $(".under_construction2").click(function () {
     //     var base_url = window.location.origin;
-    //     location.href = base_url + "";
+    //     $("body").fadeOut("slow", function(){
+    //         location.href = base_url + "/.../";
+    //     })
     // });
 });

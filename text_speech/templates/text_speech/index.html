@@ -3,7 +3,7 @@
     {% load static %}
     <head>
         <meta charset="UTF-8">
-        <title>Text to/from Speech</title>
+        <title>Text to Speech</title>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.structure.min.css" integrity="sha512-oM24YOsgj1yCDHwW895ZtK7zoDQgscnwkCLXcPUNsTRwoW1T1nDIuwkZq/O6oLYjpuz4DfEDr02Pguu68r4/3w==" crossorigin="anonymous" />
@@ -23,36 +23,43 @@
             {{ error }}
             <div class="grid">
                 <div></div>
-                <div class="center_text">
-                    <h3>Text to/from Speech</h3>
+                <div class="center">
+                    <h3>Text to Speech</h3>
                 </div>
                 <div></div>
 
-                <div>
+                <div></div>
+                <div class="grid_box">
                     <label>{{ form.text.label }}: </label>
                     {{ form.text }}
                     {{ form.text.errors }}
                 </div>
                 <div></div>
-                <div>
-                    <input id="speech" type="submit" value="Speech">
-                    <img id="loading" src="{% static "text_speech/loading.gif" %}"/>
-                </div>
 
-                <div>
+                <div></div>
+                <div class="grid_box">
                     <label>{{ form.voice.label }}: </label>
-                    {{ form.voice }}
-                    {{ form.voice.errors }}
+                    <div class="inline_spacing">
+                        {{ form.voice }}
+                        {{ form.voice.errors }}
+                    </div>
                 </div>
                 <div></div>
-                <div></div>
 
-                <div>
-                    <div id="speed">
+                <div></div>
+                <div class="grid_box">
+                    <label>Speed:</label>
+                    <div id="speed" class="inline_spacing">
                         <div id="custom-handle" class="ui-slider-handle"></div>
                     </div>
                 </div>
                 <div></div>
+
+                <div></div>
+                <div class="center grid_box">
+                    <input id="speech" class="center" type="submit" value="Speak">
+                    <img id="loading" class="center" src="{% static "text_speech/loading.gif" %}"/>
+                </div>
                 <div></div>
             </div>
         </form>
