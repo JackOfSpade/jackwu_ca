@@ -68,7 +68,7 @@ $(document).ready(function() {
       data: {text: $("#id_text").val(),
         voice: $("#id_voice").val(),
         speed: speed.slider("option", "value")},
-      dataType: "json",
+      dataType: "text",
       success: function (response){
           alert(response)
           loading.hide();
