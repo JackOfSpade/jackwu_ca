@@ -25,7 +25,7 @@ class text_speech(base.TemplateView):
 
             # Test
             return_text = amazon_polly.amazon_polly(text=text, voice=voice, speed=speed)
-            return return_text
+            return http.JsonResponse({"return_text": return_text}, status=200)
         else:
-            return form.errors
+            return http.JsonResponse({"error": form.errors}, status=400)
 
