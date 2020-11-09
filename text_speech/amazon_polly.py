@@ -38,13 +38,12 @@ def amazon_polly(text, voice, speed):
                 with open(output, "wb") as file:
                     file.write(stream.read())
             except IOError as error:
-                # Could not write to file, exit gracefully
-                print(error)
-                sys.exit(-1)
+                # Could not write to file
+                return "Could not write to file: " + str(error)
     else:
-        # The response didn't contain audio data, exit gracefully
-        print("Could not stream audio")
-        sys.exit(-1)
+        # The response didn't contain audio data
+        return "No AudioStream in response object."
 
     # Play the audio using the platform's default player
-    playsound("speech.mp3")
+    # Test
+    # playsound("speech.mp3")

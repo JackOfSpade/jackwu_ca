@@ -69,7 +69,8 @@ $(document).ready(function() {
         voice: $("#id_voice").val(),
         speed: speed.slider("option", "value")},
       dataType: "json",
-      success: function (){
+      success: function (response){
+          alert(response)
           loading.hide();
           speech.prop("disabled", false);
           speech.show();
