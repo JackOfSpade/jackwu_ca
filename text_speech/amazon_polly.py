@@ -48,7 +48,7 @@ def amazon_polly(text, voice, speed):
 
     seed = str(random.random())[2:]
 
-    return upload_to_bucket("speech.mp3" + seed, "speech.mp3" + seed, "jackwu.ca")
+    return upload_to_bucket("speech.mp3" + seed, "speech.mp3", "jackwu.ca")
 
 def upload_to_bucket(blob_name, path_to_file, bucket_name):
     storage_client = storage.Client.from_service_account_json("service_account_key.json")
