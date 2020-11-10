@@ -35,8 +35,8 @@ voices = (
         ("Ruben", "     Ruben"),
     )),
     ("French", (
-        ("Céline", "     Céline"),
-        ("Léa", "     Léa"),
+        ("Celine", "     Céline"),
+        ("Lea", "     Léa"),
         ("Mathieu", "     Mathieu"),
         ("Chantal", "     Chantal (Canadian)"),
     )),
@@ -49,7 +49,7 @@ voices = (
         ("Aditi", "     Aditi"),
     )),
     ("Icelandic", (
-        ("Dóra", "     Dóra"),
+        ("Dora", "     Dóra"),
         ("Karl", "     Karl"),
     )),
     ("Italian", (
@@ -75,9 +75,9 @@ voices = (
     )),
     ("Portuguese", (
         ("Camila", "     Camila (Brazilian)"),
-        ("Vitória", "     Vitória (Brazilian)"),
+        ("Vitoria", "     Vitória (Brazilian)"),
         ("Ricardo", "     Ricardo (Brazilian)"),
-        ("Inês", "     Inês (European)"),
+        ("Ines", "     Inês (European)"),
         ("Cristiano", "     Cristiano (European)"),
     )),
     ("Romanian", (
@@ -93,7 +93,7 @@ voices = (
         ("Enrique", "     Enrique (European)"),
         ("Mia", "     Mia (Mexican)"),
         ("Lupe", "     Lupe (US)"),
-        ("Penélope", "     Penélope (US)"),
+        ("Penelope", "     Penélope (US)"),
         ("Miguel", "     Miguel (US)"),
     )),
     ("Swedish", (
