@@ -53,6 +53,7 @@ $(document).ready(function() {
     });
 
   $("#id_voice").selectmenu();
+  
   var audio = $("#audio")
 
   $("#text_speech_form").on("submit", function(event){
@@ -73,9 +74,7 @@ $(document).ready(function() {
       success: function (response){
           // For testing purposes:
           alert(response["return_text"])
-          $("#audio").attr("src", response["return_text"]);
-          audio.load();
-          audio.play();
+          audio.attr("src", response["return_text"]);
 
           loading.hide();
           speech.prop("disabled", false);
@@ -91,6 +90,9 @@ $(document).ready(function() {
         speech.show();
       }
     });
+
+    audio.load();
+    audio.play();
   });
 })
 
