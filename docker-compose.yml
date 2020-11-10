@@ -23,7 +23,7 @@ services:
       - SECRET_KEY=${SECRET_KEY}
     working_dir: /jackwu_ca
     volumes:
-      - ~/.aws:/root/.aws
+      - ~/.aws:/root/.aws:ro
     command: bash -c "python manage.py collectstatic --no-input &&
                       python manage.py makemigrations &&
                       python manage.py migrate &&
