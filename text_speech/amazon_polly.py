@@ -4,6 +4,7 @@ from botocore.exceptions import BotoCoreError, ClientError
 from contextlib import closing
 import os
 from google.cloud import storage
+from google.cloud.exceptions import NotFound
 
 def amazon_polly(text, voice, speed):
     # Create a client using the credentials and region defined in the [adminuser]
@@ -49,6 +50,13 @@ def amazon_polly(text, voice, speed):
 def upload_to_bucket(blob_name, path_to_file, bucket_name):
     storage_client = storage.Client.from_service_account_json("service_account_key.json")
     bucket = storage_client.get_bucket(bucket_name)
+
+    # Delete file from GCP bucket.
+    try:
+        bucket.delete_blob(blob_name)
+    except NotFound:
+        pass
+
     # Name of the object to be stored in the bucket
     blob = bucket.blob(blob_name)
     # Name of the object in local file system
