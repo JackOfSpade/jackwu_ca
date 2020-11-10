@@ -2,6 +2,7 @@ import django.views.generic.base as base
 import django.http as http
 import text_speech.forms as forms
 import text_speech.amazon_polly as amazon_polly
+import os
 
 class text_speech(base.TemplateView):
     template_name = "text_speech/index.html"
@@ -25,10 +26,7 @@ class text_speech(base.TemplateView):
 
             return_text = amazon_polly.amazon_polly(text=text, voice=voice, speed=speed)
 
-            if return_text != "No issues with Amazon Polly":
-                return http.JsonResponse({"return_text": return_text}, status=200)
-
-            return http.JsonResponse({}, status=200)
+            return http.JsonResponse({"return_text": return_text}, status=200)
         else:
             return http.JsonResponse({"error": form.errors}, status=400)
 

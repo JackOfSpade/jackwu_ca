@@ -3,7 +3,7 @@ from boto3 import Session
 from botocore.exceptions import BotoCoreError, ClientError
 from contextlib import closing
 import os
-
+from google.cloud import storage
 
 def amazon_polly(text, voice, speed):
     # Create a client using the credentials and region defined in the [adminuser]
@@ -44,4 +44,15 @@ def amazon_polly(text, voice, speed):
     else:
         return "No AudioStream in response object."
 
-    return "No issues with Amazon Polly"
+    return upload_to_bucket("speech.mp3", "speech.mp3", "jackwu.ca")
+
+def upload_to_bucket(blob_name, path_to_file, bucket_name):
+    storage_client = storage.Client.from_service_account_json("service_account_key.json")
+    bucket = storage_client.get_bucket(bucket_name)
+    # Name of the object to be stored in the bucket
+    blob = bucket.blob(blob_name)
+    # Name of the object in local file system
+    blob.upload_from_filename(path_to_file)
+
+    # returns a public url
+    return blob.public_url

@@ -53,6 +53,7 @@ $(document).ready(function() {
     });
 
   $("#id_voice").selectmenu();
+  var audio = $("#audio")
 
   $("#text_speech_form").on("submit", function(event){
     speech.hide();
@@ -71,19 +72,14 @@ $(document).ready(function() {
       dataType: "json",
       success: function (response){
           // For testing purposes:
-          alert(response["return_text"])
+          if (!response["return_text"].includes("google"))
+          {
+              alert(response["return_text"])
+          }
 
-          let $audio = $('<audio />', { src: "/jackwu_ca/speech.mp3" });
-          $audio[0].play();
-
-          let $audio1 = $('<audio />', { src: "speech.mp3" });
-          $audio1[0].play();
-
-          let $audio2 = $('<audio />', { src: "./speech.mp3" });
-          $audio2[0].play();
-
-          let $audio3 = $('<audio />', { src: "../../../speech.mp3" });
-          $audio3[0].play();
+          audio.src = response["return_text"];
+          audio.load();
+          audio.get(0).play();
 
           loading.hide();
           speech.prop("disabled", false);
