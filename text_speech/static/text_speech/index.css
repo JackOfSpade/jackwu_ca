@@ -103,3 +103,7 @@ option {
     display: inline-block;
     margin-left: 10px;
 }
+
+audio:focus {
+    outline: none;
+}
