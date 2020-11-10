@@ -25,7 +25,7 @@ services:
 #      - AWS_SHARED_CREDENTIALS_FILE=/some/other/file/path/on/the/system/credentials-file-name
     working_dir: /jackwu_ca
     volumes:
-      - ~/.aws:/root/.aws:ro
+      - .aws:/root/.aws:ro
     command: bash -c "python manage.py collectstatic --no-input &&
                       python manage.py makemigrations &&
                       python manage.py migrate &&
