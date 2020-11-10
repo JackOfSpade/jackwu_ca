@@ -77,13 +77,13 @@ $(document).ready(function() {
                 // For testing purposes:
                 alert(response["return_text"])
                 audio.attr("src", response["return_text"]);
-                audio.load()
 
                 loading.hide();
                 speech.prop("disabled", false);
                 speech.show();
 
                 audio.show("fast")
+                audio.load()
                 },
             error: function(xhr,errmsg,err) {
                 alert("xhr: " + xhr +
