@@ -46,7 +46,7 @@ def amazon_polly(text, voice, speed):
     else:
         return "No AudioStream in response object."
 
-    seed = str(random.seed)
+    seed = str(random.random())[2:]
 
     return upload_to_bucket("speech.mp3" + seed, "speech.mp3" + seed, "jackwu.ca")
 
