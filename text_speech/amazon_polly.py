@@ -16,10 +16,15 @@ def amazon_polly(text, voice, speed):
     except Exception as e:
         return "Session authentication exception: " + str(e)
 
+    if voice in ["Amy", "Emma", "Brian", "Ivy", "Joanna", "Kendra", "Kimberly", "Salli", "Joey", "Justin", "Kevin", "Matthew", "Camila", "Lupe"]:
+        engine = "neural"
+    else:
+        engine = "standard"
+
     try:
         # Request speech synthesis
         response = polly.synthesize_speech(Text='<speak><prosody rate="' + speed + '%">' + text + "</prosody></speak>", TextType="ssml", OutputFormat="mp3",
-                                           VoiceId=voice)
+                                           VoiceId=voice, Engine=engine)
     except (BotoCoreError, ClientError) as error:
         return "The service returned an error"
 
