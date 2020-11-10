@@ -78,7 +78,7 @@ $(document).ready(function() {
                 // alert(response["return_text"])
 
                 audio.attr("src", response["return_text"]);
-                # Cannot audio.play() without interaction because Chrome restrictions.
+                // Cannot audio.play() without interaction because Chrome restrictions.
 
                 loading.hide();
                 speech.prop("disabled", false);
