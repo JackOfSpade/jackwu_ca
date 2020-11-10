@@ -21,8 +21,6 @@ services:
       - db_host=${db_host}
       - db_port=${port}
       - SECRET_KEY=${SECRET_KEY}
-#      - AWS_CONFIG_FILE=/some/file/path/on/the/system/config-file-name
-#      - AWS_SHARED_CREDENTIALS_FILE=/some/other/file/path/on/the/system/credentials-file-name
     working_dir: /jackwu_ca
     volumes:
       - .aws:/root/.aws:ro

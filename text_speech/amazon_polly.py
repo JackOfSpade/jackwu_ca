@@ -46,7 +46,7 @@ def amazon_polly(text, voice, speed):
     else:
         return "No AudioStream in response object."
 
-    return "No issues with Amazon Polly"
     # Play the audio using the platform's default player
-    # Test
-    # playsound("speech.mp3")
+    playsound("speech.mp3")
+
+    return "No issues with Amazon Polly"

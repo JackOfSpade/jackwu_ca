@@ -10,7 +10,6 @@ WORKDIR /jackwu_ca
 
 # Copy commands cannot be chained like RUN
 COPY . /jackwu_ca
-COPY .aws ~/
 
 RUN apt-get -y update && \
     apt-get -y upgrade && \
