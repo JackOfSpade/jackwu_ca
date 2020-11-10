@@ -8,6 +8,7 @@ RUN mkdir /jackwu_ca
 
 WORKDIR /jackwu_ca
 
+# Copy commands cannot be chained like RUN
 COPY . /jackwu_ca
 
 RUN apt-get -y update && \

@@ -1,9 +1,7 @@
 import django.views.generic.base as base
 import django.http as http
-import django.shortcuts as shortcuts
 import weather.forms as forms
 import weather.interface as interface
-import json
 
 class weather(base.TemplateView):
     template_name = "weather/index.html"
@@ -27,7 +25,6 @@ class weather(base.TemplateView):
             zip_postal = form.cleaned_data["zip_postal"]
 
             results_matrix = interface.get_results_matrix(type_of_person, unit, exercise, zip_postal)
-            # return shortcuts.render(request, "weather/index.html", context={"form":form, "results_matrix": results_matrix.tolist()})=
             return http.JsonResponse({"results_matrix": results_matrix.tolist()}, status=200)
         else:
             return http.JsonResponse({"error": form.errors}, status=400)

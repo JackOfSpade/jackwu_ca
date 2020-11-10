@@ -159,7 +159,7 @@ def get_results_matrix(type_of_person, unit, exercise, zip_postal):
     else:
         results_matrix = np.array(object=[["Weather is bad in " + location_name + " for the rest of the day."],
                                           [exercise.capitalize() + " is not recommended."],
-                                          ["Drive instead or try a different exercise."]])
+                                          ["Exercise indoors instead."]])
 
     results_matrix = results_matrix.astype(dtype=str)
     return results_matrix

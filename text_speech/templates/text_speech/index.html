@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" >
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Text to Speech</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.structure.min.css" integrity="sha512-oM24YOsgj1yCDHwW895ZtK7zoDQgscnwkCLXcPUNsTRwoW1T1nDIuwkZq/O6oLYjpuz4DfEDr02Pguu68r4/3w==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.theme.min.css" integrity="sha512-9h7XRlUeUwcHUf9bNiWSTO9ovOWFELxTlViP801e5BbwNJ5ir9ua6L20tEroWZdm+HFBAWBLx2qH4l4QHHlRyg==" crossorigin="anonymous" />
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static "text_speech/index.css" %}">
+        <script type="text/javascript" src="{% static "text_speech/index.js" %}"></script>
+    </head>
+
+    <body style="visibility: hidden;">
+        <form action="/text_speech" method="post" autocomplete="off" id="text_speech_form">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ form.errors }}
+            {{ error }}
+            <div class="grid">
+                <div></div>
+                <div class="center">
+                    <h2>Text to Speech</h2>
+                </div>
+                <div></div>
+
+                <div></div>
+                <div class="grid_box">
+                    <label>{{ form.text.label }}: </label>
+                    {{ form.text }}
+                    {{ form.text.errors }}
+                </div>
+                <div></div>
+
+                <div></div>
+                <div class="grid_box">
+                    <label>{{ form.voice.label }}: </label>
+                    <div class="inline_spacing">
+                        {{ form.voice }}
+                        {{ form.voice.errors }}
+                    </div>
+                </div>
+                <div></div>
+
+                <div></div>
+                <div class="grid_box">
+                    <label>Speed:</label>
+                    <div id="speed" class="inline_spacing">
+                        <div id="custom-handle" class="ui-slider-handle"></div>
+                    </div>
+                </div>
+                <div></div>
+
+                <div></div>
+                <div class="center grid_box">
+                    <input id="speech" class="center" type="submit" value="Speak">
+                    <img id="loading" class="center" src="{% static "text_speech/loading.gif" %}"/>
+                </div>
+                <div></div>
+
+                <div></div>
+                <div class="center grid_box">
+                    <audio id="audio" controls>
+                        <source src="" type="audio/mp3">
+                    </audio>
+                </div>
+                <div></div>
+            </div>
+        </form>
+
+
+    </body>
+</html>

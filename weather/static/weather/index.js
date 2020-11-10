@@ -170,9 +170,11 @@ $(document).ready(function() {
 
   $(".spriteWrap").sprites();
 
-  controls = $(".controls")
-
   // Auto-Hide -------------------------------------------
+
+  // controls = $(".controls")
+
+
   // controls.hover(function(){
   //   controls.css({
   //     "transform": "translate3d(0px, 0px, 0px)",
@@ -196,6 +198,7 @@ $(document).ready(function() {
   //   });
   // });
   // --------------------------------------------------------
+
   function convert_to_html(list_or_string) {
     var element;
     var html = "";

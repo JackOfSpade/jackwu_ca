@@ -12,6 +12,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Any usage of cryptographic signing.
 
 # ------------------------------- Change here when alternating between production and dev ------------------------------
+
+# Unstable on local machine, prone to timeouts due to connection to google storage.
+
+
 import google.oauth2.service_account as service_account
 
 # Where to find static files to collect
@@ -21,6 +25,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "homepage", "static"),
     os.path.join(BASE_DIR, "analysis", "static"),
 ]
+
 
 # Where static files are collected after collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
@@ -46,10 +51,18 @@ DATABASES = {
 
 DEBUG = False
 
-# ----------------------------------------------------------------------------------------------------------------------
-
 ALLOWED_HOSTS = ["jackwu.ca", ".jackwu.ca"]
 
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE=True
+
+# ----------------------------------------------------------------------------------------------------------------------
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -61,7 +74,8 @@ INSTALLED_APPS = [
     "homepage.apps.HomepageConfig",
     "ML_reviews.apps.MlReviewsConfig",
     "analysis.apps.AnalysisConfig",
-    "weather.apps.WeatherConfig"
+    "weather.apps.WeatherConfig",
+    "text_speech.apps.TextSpeechConfig"
 ]
 
 MIDDLEWARE = [
@@ -119,13 +133,3 @@ USE_L10N = True
 
 USE_TZ = True
 
-SESSION_COOKIE_SECURE = True
-
-SECURE_SSL_REDIRECT = True
-CSRF_COOKIE_SECURE = True
-# 31536000
-SECURE_HSTS_SECONDS = 3600
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_BROWSER_XSS_FILTER = True
-SESSION_EXPIRE_AT_BROWSER_CLOSE=True

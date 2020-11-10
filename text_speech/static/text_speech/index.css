@@ -1,0 +1,114 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+
+/* Global Styles
+  ---------------------------------------------- */
+  html {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  body {
+      height:100%;
+      margin: 0;
+      font-size: 1em;
+      line-height: 1.4;
+      position: relative;
+      visibility: visible !important;
+      background: #fcf4e4;
+      display: grid;
+  }
+
+label{
+  /*color: white;*/
+  /*margin-right: 10px;*/
+}
+
+select, option, input, table, tr, td, th{
+  /*color: white;*/
+  /*background:transparent;*/
+}
+
+option {
+  /*background-color: grey;*/
+}
+
+.center{
+    text-align: center;
+    margin: auto;
+}
+
+#loading{
+  height: 25px;
+  width: 25px;
+}
+
+#id_text
+{
+    height: 375px;
+    width: 500px;
+    background: #fcfcfc;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 2.5%;
+}
+
+.grid_box{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#speed{
+    width: 430px;
+    outline: 0 none !important;
+    background: #fcfcfc;
+}
+
+#speed .ui-slider-range {
+  background: lightskyblue;
+}
+#speed .ui-slider-handle {
+    border-color: lightskyblue;
+}
+
+#custom-handle:active {
+    background-color: lightskyblue;
+}
+
+#custom-handle {
+    width: 2em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+    outline: none;
+    background-color: white;
+}
+
+#id_voice-menu{
+    max-height: 250px;
+    white-space: pre-wrap;
+    background: #fcfcfc;
+}
+
+#id_voice-button{
+    margin-left: 7.5px;
+}
+
+.inline_spacing{
+    display: inline-block;
+    margin-left: 10px;
+}
+
+audio:focus {
+    outline: none;
+}
+
+#speech{
+    padding: 5px;
+}
