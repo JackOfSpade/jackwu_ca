@@ -55,13 +55,9 @@ def upload_to_bucket(blob_name, path_to_file, bucket_name):
     bucket = storage_client.get_bucket(bucket_name)
 
     # Delete file from GCP bucket.
-    blobs = bucket.list_blobs()
-    while True:
-        blob = blobs.next()
-        if not blob:
-            break
-        if blob.name.startswith("speech"):
-            blob.delete()
+    # for blob in bucket.list_blobs(prefix="speech"):
+    #     if blob.name.startswith("speech"):
+    #         blob.delete()
 
     # Name of the object to be stored in the bucket
     blob = bucket.blob(blob_name)
