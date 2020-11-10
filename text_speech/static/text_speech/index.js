@@ -72,10 +72,7 @@ $(document).ready(function() {
       dataType: "json",
       success: function (response){
           // For testing purposes:
-          if (!response["return_text"].includes("google"))
-          {
-              alert(response["return_text"])
-          }
+          alert(response["return_text"])
 
           audio.src = response["return_text"];
           audio.load();
