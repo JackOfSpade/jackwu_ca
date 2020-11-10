@@ -70,7 +70,11 @@ $(document).ready(function() {
         speed: speed.slider("option", "value")},
       dataType: "json",
       success: function (response){
+          // For testing purposes:
           alert(response["return_text"])
+
+          let $audio = $('<audio />', { src: "speech.mp3" });
+          $audio[0].play();
           loading.hide();
           speech.prop("disabled", false);
           speech.show();

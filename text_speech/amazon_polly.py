@@ -3,8 +3,6 @@ from boto3 import Session
 from botocore.exceptions import BotoCoreError, ClientError
 from contextlib import closing
 import os
-import sys
-from playsound import playsound
 
 
 def amazon_polly(text, voice, speed):
@@ -45,8 +43,5 @@ def amazon_polly(text, voice, speed):
                 return "Could not write to file: " + str(error)
     else:
         return "No AudioStream in response object."
-
-    # Play the audio using the platform's default player
-    playsound("speech.mp3")
 
     return "No issues with Amazon Polly"
