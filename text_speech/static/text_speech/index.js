@@ -76,7 +76,7 @@ $(document).ready(function() {
             success: function (response){
                 // For testing purposes:
                 // alert(response["return_text"])
-                
+
                 audio.attr("src", response["return_text"]);
 
                 loading.hide();

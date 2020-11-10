@@ -48,19 +48,21 @@ def amazon_polly(text, voice, speed):
 
     seed = str(random.random())[2:]
 
-    return upload_to_bucket("speech.mp3" + seed, "speech.mp3", "jackwu.ca")
+    return upload_to_bucket("speech" + seed + ".mp3", "speech.mp3", "jackwu.ca")
 
 def upload_to_bucket(blob_name, path_to_file, bucket_name):
     storage_client = storage.Client.from_service_account_json("service_account_key.json")
     bucket = storage_client.get_bucket(bucket_name)
 
-    # Delete file from GCP bucket.
-    # for blob in bucket.list_blobs(prefix="speech"):
-    #     if blob.name.startswith("speech"):
-    #         blob.delete()
+    try:
+        blobs = bucket.list_blobs(prefix="speech_files")
+        for blob in blobs:
+            blob.delete()
+    except:
+        pass
 
     # Name of the object to be stored in the bucket
-    blob = bucket.blob(blob_name)
+    blob = bucket.blob("speech_files/" + blob_name)
     # Name of the object in local file system
     blob.upload_from_filename(path_to_file)
 
