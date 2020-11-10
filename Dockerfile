@@ -11,8 +11,6 @@ WORKDIR /jackwu_ca
 # Copy commands cannot be chained like RUN
 COPY . /jackwu_ca
 COPY .aws ~/
-ENV AWS_CONFIG_FILE=~/.aws/config
-ENV AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials
 
 RUN apt-get -y update && \
     apt-get -y upgrade && \
