@@ -75,6 +75,16 @@ $(document).ready(function() {
 
           let $audio = $('<audio />', { src: "/jackwu_ca/speech.mp3" });
           $audio[0].play();
+
+          let $audio1 = $('<audio />', { src: "speech.mp3" });
+          $audio1[0].play();
+
+          let $audio2 = $('<audio />', { src: "./speech.mp3" });
+          $audio2[0].play();
+
+          let $audio3 = $('<audio />', { src: "../../../speech.mp3" });
+          $audio3[0].play();
+
           loading.hide();
           speech.prop("disabled", false);
           speech.show();
