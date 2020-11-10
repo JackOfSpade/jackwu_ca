@@ -5,6 +5,7 @@ from contextlib import closing
 import os
 from google.cloud import storage
 from google.cloud.exceptions import NotFound
+import random
 
 def amazon_polly(text, voice, speed):
     # Create a client using the credentials and region defined in the [adminuser]
@@ -45,17 +46,22 @@ def amazon_polly(text, voice, speed):
     else:
         return "No AudioStream in response object."
 
-    return upload_to_bucket("speech.mp3", "speech.mp3", "jackwu.ca")
+    seed = str(random.seed)
+
+    return upload_to_bucket("speech.mp3" + seed, "speech.mp3" + seed, "jackwu.ca")
 
 def upload_to_bucket(blob_name, path_to_file, bucket_name):
     storage_client = storage.Client.from_service_account_json("service_account_key.json")
     bucket = storage_client.get_bucket(bucket_name)
 
     # Delete file from GCP bucket.
-    try:
-        bucket.delete_blob(blob_name)
-    except NotFound:
-        pass
+    blobs = bucket.list_blobs()
+    while True:
+        blob = blobs.next()
+        if not blob:
+            break
+        if blob.name.startswith("speech"):
+            blob.delete()
 
     # Name of the object to be stored in the bucket
     blob = bucket.blob(blob_name)

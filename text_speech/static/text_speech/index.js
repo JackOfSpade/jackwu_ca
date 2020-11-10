@@ -73,10 +73,9 @@ $(document).ready(function() {
       success: function (response){
           // For testing purposes:
           alert(response["return_text"])
-
-          audio.src = response["return_text"];
+          $("#audio").attr("src", response["return_text"]);
           audio.load();
-          audio.get(0).play();
+          audio.play();
 
           loading.hide();
           speech.prop("disabled", false);
