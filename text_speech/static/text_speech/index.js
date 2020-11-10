@@ -73,7 +73,7 @@ $(document).ready(function() {
           // For testing purposes:
           alert(response["return_text"])
 
-          let $audio = $('<audio />', { src: "speech.mp3" });
+          let $audio = $('<audio />', { src: "/jackwu_ca/speech.mp3" });
           $audio[0].play();
           loading.hide();
           speech.prop("disabled", false);
