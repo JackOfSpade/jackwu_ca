@@ -29,16 +29,17 @@
                 <div></div>
 
                 <div></div>
-                <div class="grid_box">
-                    <label>{{ form.text.label }}: </label>
+                <div class="grid_box center">
+                    <label id="text_label">Text: </label>
+                    <br>
                     {{ form.text }}
                     {{ form.text.errors }}
                 </div>
                 <div></div>
 
                 <div></div>
-                <div class="grid_box">
-                    <label>{{ form.voice.label }}: </label>
+                <div class="center grid_box">
+                    <label id="voice_label">Voice: </label>
                     <div class="inline_spacing">
                         {{ form.voice }}
                         {{ form.voice.errors }}
@@ -47,8 +48,8 @@
                 <div></div>
 
                 <div></div>
-                <div class="grid_box">
-                    <label>Speed:</label>
+                <div class="center grid_box">
+                    <label id="speed_label">Speed:</label>
                     <div id="speed" class="inline_spacing">
                         <div id="custom-handle" class="ui-slider-handle"></div>
                     </div>
@@ -57,7 +58,7 @@
 
                 <div></div>
                 <div class="center grid_box">
-                    <input id="speech" class="center" type="submit" value="Speak">
+                    <input id="speak" class="center" type="submit" value="Speak">
                     <img id="loading" class="center" src="{% static "text_speech/loading.gif" %}"/>
                 </div>
                 <div></div>

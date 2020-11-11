@@ -109,6 +109,18 @@ audio:focus {
     outline: none;
 }
 
-#speech{
+#speak{
     padding: 5px;
+}
+
+#text_label{
+    margin-left: -475px;
+}
+
+#voice_label{
+    margin-left: -175px;
+}
+
+#speed_label{
+    margin-left: -7.5px;
 }

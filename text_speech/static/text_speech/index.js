@@ -31,7 +31,7 @@ $(document).ready(function() {
     });
 
     var results_table = $("#results_table")
-    var speech = $("#speech");
+    var speech = $("#speak");
     var loading = $("#loading");
 
     loading.hide();
