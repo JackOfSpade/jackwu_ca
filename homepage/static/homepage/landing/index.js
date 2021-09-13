@@ -28,13 +28,13 @@ $(document).ready(function() {
     function initialize(speed) {
         // Animation for button 1
         window.setTimeout(function () {
-            $(".stock_button").animate({
+            $(".covid_button").animate({
                 top: "32vh",
                 left: "33vw"
             }, speed);
             // After animation is done
             window.setTimeout(function () {
-                $(".stock_button").hover(function () {
+                $(".covid_button").hover(function () {
                     $(this).animate({
                         opacity: "1"
                     });
@@ -181,10 +181,10 @@ $(document).ready(function() {
         })
     });
 
-    $(".stock_button").click(function () {
+    $(".covid_button").click(function () {
         var base_url = window.location.origin;
         $("body").fadeOut("slow", function(){
-            location.href = base_url + "/analysis/stock/";
+            location.href = base_url + "/analysis/covid/";
         })
     });
 
