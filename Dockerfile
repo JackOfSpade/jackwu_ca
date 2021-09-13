@@ -17,7 +17,7 @@ RUN apt-get -y update && \
     pip install -r requirements.txt && \
     pip install django-storages && \
     pip install google-cloud-storage && \
-    pip install gunicorn && \
+    # pip install gunicorn && \
     mkdir static && \
     apt-get -y update && \
     apt-get -y upgrade
