@@ -4,8 +4,20 @@
 <head>
     <title>Prediction of Daily, New COVID-19 Cases</title>
     <meta charset="UTF-8">
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("adobe_dc_view_sdk.ready", function(){
+            var adobeDCView = new AdobeDC.View({clientId: "4c55813925bf40e99442a0c686f08950", divId: "adobe-dc-view"});
+            adobeDCView.previewFile({
+                content:{location: {url: "{% static "analysis/covid/Report.pdf" %}"}},
+                metaData:{fileName: "Report.pdf"}
+            }, {embedMode: "IN_LINE"});
+        });
+    </script>
 </head>
 <body>
-    <embed src="{% static "analysis/covid/Report.pdf" %}" width="80%" height="80%" type="application/pdf">
+{#    <embed src="{% static "analysis/covid/Report.pdf" %}" width="80%" height="80%" type="application/pdf">#}
+
+    <div id="adobe-dc-view" style="width: 800px;"></div>
 </body>
 </html>
