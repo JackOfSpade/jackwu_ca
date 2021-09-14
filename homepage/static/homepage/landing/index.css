@@ -8,6 +8,7 @@ html,body {
 body{
     display: grid;
     visibility: visible !important;
+    user-select: none;
 }
 
 #content {
@@ -80,7 +81,6 @@ button{
     opacity: 0.3;
     background: white;
     border-width: thick;
-    user-select: none;
 }
 
 .weather_button{
