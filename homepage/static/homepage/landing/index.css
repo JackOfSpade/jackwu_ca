@@ -80,6 +80,7 @@ button{
     opacity: 0.3;
     background: white;
     border-width: thick;
+    user-select: none;
 }
 
 .weather_button{
