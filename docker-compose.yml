@@ -26,8 +26,8 @@ services:
       - .aws:/root/.aws:ro
     command: bash -c "python manage.py collectstatic --no-input &&
                       python manage.py makemigrations &&
-                      python manage.py migrate"
-                      #gunicorn -c gunicorn.conf.py jackwu_ca.wsgi"
+                      python manage.py migrate &&
+                      gunicorn -c gunicorn.conf.py jackwu_ca.wsgi"
     ports:
       - 443:443
     expose:
