@@ -43,7 +43,7 @@ $(document).ready(function() {
         range: "min",
         min: 0,
         max: 200,
-        value: 75,
+        value: 100,
         create: function() {
             handle.text($( this ).slider("value"));
             },
