@@ -1,6 +1,7 @@
 #
 The website: www.JackWu.ca
 
+
 **Reset JackWu.ca**
 Prerequisite: make sure files .env, service_account_key.json, config.ini is created at system root.
 
@@ -32,10 +33,9 @@ docker-compose down; cd && rm -r -f jackwu_ca; rm -r -f jackwu_ca_maintenance; d
 
 
 
-**To update certificate: ****
+**To update certificate: **
 	Just edit the file texts in jackwu_ca_keys_and_settings/SSL and then rerun command above.
 	DO NOT generate new .csr, use the existing one in the file.
 	vi file_name to open file in text.
 	:1,$d to delete all lines.
 	Shift-z twice to save.
-![image](https://github.com/JackOfSpade/jackwu_ca/assets/3615459/86d10e43-1e07-4886-b27e-f186be2356d0)
