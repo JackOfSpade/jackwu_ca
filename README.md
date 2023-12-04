@@ -13,7 +13,7 @@ Remove all containers + images:
 
 docker-compose down; cd && rm -r -f jackwu_ca; rm -r -f jackwu_ca_maintenance; docker stop $(docker ps -aq); docker rm $(docker ps -aq) -f; docker rmi $(docker images -q) -f; docker system prune -f; docker volume prune -f; docker network prune -f; sudo service docker restart 
 
-**Remove all containers + specific images:**
+Remove all containers + specific images:
 
 docker-compose down; cd && rm -r -f jackwu_ca; rm -r -f jackwu_ca_maintenance; docker stop $(docker ps -aq); docker rm $(docker ps -aq) -f; docker rmi $(docker images "jackwu_ca_web_service") -f; docker rmi $(docker images "jackwu_ca_nginx") -f; docker system prune -f; docker volume prune -f; docker network prune -f; sudo service docker restart
 
