@@ -1,11 +1,9 @@
 #
 The website: www.JackWu.ca
 
-**Reset JackWu.ca**
+**Prerequisite:** make sure files .env, service_account_key.json, config.ini is created at system root.
 
-Prerequisite: make sure files .env, service_account_key.json, config.ini is created at system root.
-
-**Reset:**
+**Reset JackWu.ca:**
 
 Note: && means previous command must be success, ; means previous command doesn't have to be success.
 
