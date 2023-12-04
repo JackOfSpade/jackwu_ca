@@ -45,7 +45,7 @@ docker-compose down; cd && rm -r -f jackwu_ca; rm -r -f jackwu_ca_maintenance; d
 
 	Just edit the file texts in jackwu_ca_keys_and_settings/SSL and then rerun command above.
  
-	DO NOT generate new .csr, use the existing one in the file.
+	You don't need generate new .csr, use the existing one in the file.
  
 	vi file_name to open file in text.
  
