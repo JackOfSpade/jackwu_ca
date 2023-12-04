@@ -33,7 +33,7 @@ docker-compose down; cd && rm -r -f jackwu_ca; rm -r -f jackwu_ca_maintenance; d
 
 
 
-**To update certificate: **
+**To update certificate:**
 	Just edit the file texts in jackwu_ca_keys_and_settings/SSL and then rerun command above.
 	DO NOT generate new .csr, use the existing one in the file.
 	vi file_name to open file in text.
